@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:controller="com.example.project.New_message" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1115.0" stroke="BLACK" strokeType="INSIDE" width="1067.0" GridPane.rowIndex="9">
+         <fill>
+            <LinearGradient cycleMethod="REPEAT" endX="0.18939391771952307" endY="0.6439393948424945" startX="0.11363635460535687" startY="0.4356060244820335">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.5621052384376526" green="0.7122105360031128" blue="0.8526315689086914" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.821052610874176" green="0.6598830223083496" blue="0.6598830223083496" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="49.0" prefWidth="83.0" text="back" textFill="#1a85bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="30.0" top="-40.0" />
+         </GridPane.margin>
+      </Button>
+   </children>
+</GridPane>

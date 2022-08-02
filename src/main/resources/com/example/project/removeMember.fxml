@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.RemoveMember">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="1526.0" stroke="BLACK" strokeType="INSIDE" width="1662.0">
+            <fill>
+                <RadialGradient centerX="0.21585902716094701" centerY="1.0" cycleMethod="REPEAT" radius="0.10550460246724817">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.6842105388641357" green="0.49094218015670776" blue="0.2382066249847412" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.3979337215423584" green="0.621052622795105" blue="0.5020558834075928" opacity="0.9200000166893005" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </RadialGradient>
+            </fill>
+        </Rectangle>
+        <Button fx:id="back" onAction="#back" mnemonicParsing="false" prefHeight="38.0" prefWidth="58.0" text="back" textFill="#173fc2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+            <font>
+                <Font size="15.0" />
+            </font>
+            <GridPane.margin>
+                <Insets right="10.0" top="-20.0" />
+            </GridPane.margin>
+        </Button>
+    </children>
+</GridPane>

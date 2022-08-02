@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.Second_menu">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.11251462250947952" green="0.25655362010002136" blue="0.410526305437088" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <VBox alignment="TOP_RIGHT" layoutX="470.0" prefHeight="400.0" prefWidth="130.0">
+         <children>
+            <Button fx:id="timeline" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#timeline" prefHeight="31.0" prefWidth="224.0" text="timeline" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="directs" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#directs" prefHeight="31.0" prefWidth="148.0" text="directs" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="groups" layoutX="10.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#groups" prefHeight="31.0" prefWidth="132.0" text="groups" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="search" layoutX="10.0" layoutY="61.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="143.0" text="search" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="advertising" layoutX="10.0" layoutY="87.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#advertising" prefHeight="31.0" prefWidth="126.0" text="Advertising" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="store" layoutX="10.0" layoutY="112.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#store" prefHeight="31.0" prefWidth="119.0" text="store" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="logout" layoutX="10.0" layoutY="138.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="119.0" text="log out" textFill="#0c78a6">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <GridPane layoutY="132.0" prefHeight="270.0" prefWidth="480.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <Label layoutX="14.0" layoutY="14.0" text="ID :" textFill="#00aeff">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="44.0" text="number of followers :" textFill="#00aeff">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="80.0" text="number of followings :" textFill="#00aeff">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="272.0" layoutY="87.0" text="." textFill="#fdff00" />
+      <Label layoutX="252.0" layoutY="44.0" text="." textFill="#fdff00" />
+      <Label layoutX="43.0" layoutY="112.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="282.0" layoutY="97.0" text="." textFill="#fdff00" />
+      <Label layoutX="210.0" layoutY="141.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="6.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="128.0" layoutY="114.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </Label>
+      <Label layoutX="4.0" layoutY="93.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="351.0" layoutY="6.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="81.0" layoutY="128.0" text="." textFill="#fdff00">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

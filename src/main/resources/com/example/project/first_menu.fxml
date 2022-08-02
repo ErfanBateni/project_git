@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="50.0" minWidth="100.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.First_menu">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="800.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" AnchorPane.bottomAnchor="-184.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-282.0" AnchorPane.topAnchor="0.0">
+         <fill>
+            <RadialGradient centerX="1.0" cycleMethod="REPEAT" radius="0.12385319788521586">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.26019492745399475" green="0.4307056665420532" blue="0.7473683953285217" opacity="0.7599999904632568" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7200000286102295" green="0.800000011920929" blue="0.7277833819389343" opacity="0.9100000262260437" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Rectangle>
+      <Button fx:id="signup" layoutX="232.0" layoutY="66.0" maxWidth="-Infinity" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#signup" prefHeight="55.0" prefWidth="150.0" text="sign up" textFill="#1026b4" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="194.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
+      <Button fx:id="login" layoutX="232.0" layoutY="172.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="30.0" minWidth="150.0" mnemonicParsing="false" onAction="#login" prefHeight="55.0" prefWidth="174.0" text="login" textFill="#1026b4" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="194.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
+      <Button fx:id="forget_password" layoutX="232.0" layoutY="284.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#forget_password" prefHeight="55.0" prefWidth="174.0" text="forget password" textFill="#1026b4" AnchorPane.leftAnchor="232.0" AnchorPane.rightAnchor="194.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="exit" layoutX="506.0" layoutY="329.0" mnemonicParsing="false" onAction="#exit" text="exit" textFill="#1026b4" AnchorPane.bottomAnchor="25.399999999999977" AnchorPane.rightAnchor="22.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.HelloController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0">
+         <fill>
+            <LinearGradient endX="0.9090909235405199" endY="0.4242424675912567" startX="0.5871212085088094" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6299999952316284" green="0.9321666955947876" blue="1.0" opacity="0.8145896196365356" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.8399999737739563" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="79.0" layoutY="42.0" text="Welcome to the folan" textFill="#1a00ac">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
+      <Label layoutX="145.0" layoutY="300.0" text="creators :" textFill="#003c73">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="240.0" layoutY="300.0" text="Alreza Radfard &amp; Erfan Bateni">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="260.0" layoutY="340.0" text="OOP Project">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

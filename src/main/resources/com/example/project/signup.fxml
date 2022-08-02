@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.Signup">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="800.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" AnchorPane.bottomAnchor="-400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1000.0" AnchorPane.topAnchor="0.0">
+         <fill>
+            <LinearGradient cycleMethod="REPEAT" endX="0.07196971503171057" endY="0.511363637266737" startX="0.4772727417223382" startY="0.3257575179591323">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.06904483586549759" green="0.24210526049137115" blue="0.22479921579360962" opacity="0.4399999976158142" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Button fx:id="back" layoutX="501.0" layoutY="325.0" mnemonicParsing="false" onAction="#back" prefHeight="51.0" prefWidth="77.0" text="back" textFill="#2787b7" AnchorPane.bottomAnchor="24.0" AnchorPane.rightAnchor="22.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="100.0" layoutY="115.0" text="username :" textFill="#2787b7">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="102.0" layoutY="171.0" text="password :" textFill="#2787b7">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="78.0" layoutY="39.0" text="please enter your information" textFill="#2787b7">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="100.0" layoutY="223.0" prefHeight="34.0" prefWidth="130.0" text="account type :" textFill="#2787b7">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="269.0" prefHeight="34.0" prefWidth="254.0" text="what's your first pet's name?" textFill="#2787b7">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="password" layoutX="291.0" layoutY="175.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="159.39999999999998" />
+      <TextField fx:id="username" layoutX="291.0" layoutY="121.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="159.4" />
+      <TextField fx:id="security_question" layoutX="291.0" layoutY="273.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="159.39999999999998" />
+      <Button fx:id="done" layoutX="251.0" layoutY="327.0" mnemonicParsing="false" onAction="#done" text="done" textFill="#2787b7">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="business" onAction="#business" layoutX="385.0" layoutY="227.0" mnemonicParsing="false" text="business" textFill="#2787b7">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="ordinary" onAction="#ordinary" layoutX="291.0" layoutY="227.0" mnemonicParsing="false" text="ordinary" textFill="#2787b7">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
