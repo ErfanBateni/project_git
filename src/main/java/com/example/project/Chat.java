@@ -14,7 +14,7 @@ public class Chat {
     @FXML
     Button back;
     public void back(){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("direct.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("directs.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);

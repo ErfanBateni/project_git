@@ -301,8 +301,6 @@ public class FunctionGenerator {
         }
     }
 
-
-
     public static void deleteMessage (User a, Message deleted) {
         if (deleted instanceof DirectMessage) {
             if (deleted.sender.equals(a)) {
@@ -375,8 +373,7 @@ public class FunctionGenerator {
                 System.out.println("You have been blocked by this user.");
             }
         }
-    }
-
+    } //done
 
     public static void unfollow (User follower, User followed) {
         if (followed.followers.contains(follower)) {
@@ -387,7 +384,7 @@ public class FunctionGenerator {
         else {
             System.out.println("You have not already followed this user.");
         }
-    }
+    } //done
 
     public static void blockUser (User blocked, User blocker) {
         if (!blocker.blocked.contains(blocked)) {
@@ -397,7 +394,7 @@ public class FunctionGenerator {
         else {
             System.out.println("This user has already been blocked by you.");
         }
-    }
+    } //done
 
     public static void unblockUser (User blocked, User blocker) {
         if (blocker.blocked.contains(blocked)) {
@@ -407,7 +404,9 @@ public class FunctionGenerator {
         else {
             System.out.println("You have not already blocked this user.");
         }
-    }
+    } //done
+
+
 
     public static void purchase (Advertisement A, int quantity, User buyer) {
         int a;
@@ -561,7 +560,7 @@ public class FunctionGenerator {
         if (!search) {
             System.out.println("\n No messages could be found in your directs and groups.");
         }
-    }
+    } //done without check
 
 
 
@@ -718,7 +717,7 @@ public class FunctionGenerator {
                 System.out.println("You can not send a direct message to this user, because you have blocked each other.");
             }
         }
-    }
+    } //done
 
     public static void sendDirectMessage (ArrayList<String> text, User second) {
         int v = 0, u = 0;
@@ -861,7 +860,6 @@ public class FunctionGenerator {
             System.out.println("This message was deleted.");
         }
     }
-
 
     public static void replyDirectMessage (User sender, ArrayList<String> text, DirectMessage replied) {
         if (!replied.isDeleted) {

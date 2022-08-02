@@ -11,48 +11,48 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:controller="com.example.project.New_message" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<GridPane fx:id="gridPane" fx:controller="com.example.project.FollowOrUnfollow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1115.0" stroke="BLACK" strokeType="INSIDE" width="1067.0" GridPane.rowIndex="9">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1525.0" stroke="BLACK" strokeType="INSIDE" width="1629.0">
          <fill>
-            <LinearGradient cycleMethod="REPEAT" endX="0.18939391771952307" endY="0.6439393948424945" startX="0.11363635460535687" startY="0.4356060244820335">
+            <LinearGradient cycleMethod="REPEAT" endX="0.5909090836842854" endY="0.49905305920225196" startX="0.46306818181818177" startY="0.4232954545454547">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.5621052384376526" green="0.7122105360031128" blue="0.8526315689086914" />
+                        <Color red="0.023157894611358643" green="0.19066666066646576" blue="0.34736841917037964" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.821052610874176" green="0.6598830223083496" blue="0.6598830223083496" />
+                        <Color red="0.6000000238418579" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="49.0" prefWidth="83.0" text="back" textFill="#1a85bf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+      <Button fx:id="back" onAction="#back" mnemonicParsing="false" text="back" textFill="#0c33cf" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
          <font>
-            <Font size="20.0" />
+            <Font size="17.0" />
          </font>
          <GridPane.margin>
-            <Insets right="30.0" top="-40.0" />
+            <Insets bottom="10.0" right="10.0" />
          </GridPane.margin>
       </Button>
    </children>

@@ -31,7 +31,7 @@ public class AddMember {
         for (Group group : Database.groups){
             if (group.groupName.equals(groupName)){
                 for (User user : Database.users){
-                    if ( !group.admin.equals(user) && !group.members.contains(user)){
+                    if ( !group.admin.equals(user) && !group.members.contains(user) && group.admin.followers.contains(user)){
                         Label name = new Label();
                         name.setText(user.userName);
                         name.setTextFill(Color.DARKBLUE);
