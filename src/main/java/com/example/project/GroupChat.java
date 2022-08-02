@@ -29,14 +29,38 @@ public class GroupChat {
         return text.toString();
     }
 
-
     @FXML
     TextField message;
 
     @FXML
     Button addMember;
-    public void addMember(){
-
+    public void addMember() throws FileNotFoundException {
+        String groupName = readFile(new File("D:\\groupName"));
+        for (User user : Database.users){
+            if (user.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                for (Group group : user.groups){
+                    if (group.groupName.equals(groupName)){
+                        if (user.equals(group.admin)){
+                            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("addMember.fxml"));
+                            Scene scene = null;
+                            try {
+                                scene = new Scene(fxmlLoader.load(), 600, 400);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            stage.setScene(scene);
+                            stage.show();
+                        }
+                        else {
+                            Label warning = new Label();
+                            warning.setText("You do not have the permission.");
+                            warning.setTextFill(Color.RED);
+                            gridPane.add(warning,0,3);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @FXML

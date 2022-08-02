@@ -139,7 +139,7 @@ public class FunctionGenerator {
                 System.out.println("This user is already a member of this chat.");
             }
         }
-    }
+    } //done
 
     public static void removeMember (User b, Group c) {
         int v = 0;
