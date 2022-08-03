@@ -10,7 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +22,7 @@ import static com.example.project.HelloApplication.stage;
 
 public class GroupChat {
     public GridPane gridPane;
+    public VBox vbox;
     public static String readFile(File file) throws FileNotFoundException {
         StringBuilder text = new StringBuilder("");
         Scanner scanner = new Scanner(file);
@@ -28,6 +31,7 @@ public class GroupChat {
         }
         return text.toString();
     }
+    int v,u,counter;
 
     @FXML
     TextField message;
@@ -55,7 +59,7 @@ public class GroupChat {
                             Label warning = new Label();
                             warning.setText("You do not have the permission.");
                             warning.setTextFill(Color.RED);
-                            gridPane.add(warning,0,3);
+                            gridPane.add(warning,0,1);
                         }
                     }
                 }
@@ -86,7 +90,7 @@ public class GroupChat {
                             Label warning = new Label();
                             warning.setText("  You do not have the permission.");
                             warning.setTextFill(Color.RED);
-                            gridPane.add(warning,0,3);
+                            gridPane.add(warning,0,0);
                         }
                     }
                 }
@@ -131,7 +135,7 @@ public class GroupChat {
                             Label warning = new Label();
                             warning.setText("You do not have the permission.");
                             warning.setTextFill(Color.RED);
-                            gridPane.add(warning,2,3);
+                            gridPane.add(warning,2,0);
                         }
                     }
                 }
@@ -176,8 +180,26 @@ public class GroupChat {
 
     @FXML
     Button send;
-    public void send(){
-
+    public void send() throws FileNotFoundException {
+        v=0;u=0;
+        for (int i=0;i<Database.users.size();i++){
+            if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
+                v=i;
+                break;
+            }
+        }
+        boolean groupExists = false;
+        for (int i = 0; i < Database.groups.size(); i++) {
+           if (Database.groups.get(i).groupName.equals(readFile(new File("D:\\groupName")))){
+                groupExists = true;
+                u=i;
+            }
+        }
+        if (groupExists) {
+            GroupMessage newGroupMessage = new GroupMessage(Database.users.get(v), message.getText(), Database.groups.get(u));
+        }
+        message.setText("");
+        initialize();
     }
 
     @FXML
@@ -195,14 +217,65 @@ public class GroupChat {
     }
 
     public void initialize() throws FileNotFoundException {
-
-        String groupName = readFile(new File("D:\\groupName"));
-        Label name = new Label();
-        name.setText(groupName);
-        name.setTextFill(Color.DARKBLUE);
-        name.setFont(Font.font(40));
-        GridPane.setHalignment(name, HPos.CENTER);
-        gridPane.add(name,1,1);
+        v=0;u=0;
+        for (int i=0;i<Database.users.size();i++){
+            if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
+                v=i;
+                break;
+            }
+        }
+        boolean groupExists = false;
+        for (int i = 0; i < Database.groups.size(); i++) {
+            if (Database.groups.get(i).groupName.equals(readFile(new File("D:\\groupName")))){
+                groupExists = true;
+                u=i;
+            }
+        }
+        gridPane.getChildren().clear();
+        Rectangle rectangle = new Rectangle(0,0,1600,1400);
+        rectangle.setFill(Color.LIGHTBLUE);
+        gridPane.add(rectangle,0,0);
+        counter=6;
+        /*String groupName = readFile(new File("D:\\groupName"));
+        Label namegroup = new Label();
+        namegroup.setText(groupName);
+        namegroup.setTextFill(Color.DARKBLUE);
+        namegroup.setFont(Font.font(40));
+        vbox.getChildren().add(namegroup);*/
+        if (Database.groups.get(u).messages.size()>7){
+            for (int i=Database.groups.get(u).messages.size()-1; i>=Database.groups.get(u).messages.size()-7; i--){
+                if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                    Label myMessage = new Label(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    GridPane.setHalignment(myMessage, HPos.RIGHT);
+                    myMessage.setFont(Font.font(18));
+                    gridPane.add(myMessage,2,counter);
+                    counter--;
+                }
+                else if (counter>=0){
+                    Label yourMessage = new Label(" "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    yourMessage.setFont(Font.font(18));
+                    gridPane.add(yourMessage,0,counter);
+                    counter--;
+                }
+            }
+        }
+        else {
+            for (int i=Database.groups.get(u).messages.size()-1; i>=0; i--){
+                if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                    Label myMessage = new Label(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    GridPane.setHalignment(myMessage, HPos.RIGHT);
+                    myMessage.setFont(Font.font(18));
+                    gridPane.add(myMessage,2,counter);
+                    counter--;
+                }
+                else if (counter>=0){
+                    Label yourMessage = new Label(" "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                    yourMessage.setFont(Font.font(18));
+                    gridPane.add(yourMessage,0,counter);
+                    counter--;
+                }
+            }
+        }
     }
 
 }

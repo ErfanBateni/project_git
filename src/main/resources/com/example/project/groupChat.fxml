@@ -3,110 +3,103 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.GroupChat">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1600.0" stroke="BLACK" strokeType="INSIDE" width="1600.0" GridPane.rowIndex="9">
-         <fill>
-            <LinearGradient endX="0.5037878927859394" endY="0.25757569345560943" startY="0.7689394011641995">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.10736842453479767" green="0.3609473705291748" blue="0.5684210658073425" opacity="0.8399999737739563" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.5531091690063477" green="0.8105263113975525" blue="0.4953216314315796" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <TextField fx:id="message" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="1600.0" promptText="Write a message ..." GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="BOTTOM">
-         <GridPane.margin>
-            <Insets left="45.0" />
-         </GridPane.margin>
-      </TextField>
-      <Button fx:id="send" mnemonicParsing="false" onAction="#send" prefHeight="30.0" prefWidth="49.0" text="send" textFill="#0849cf" GridPane.rowIndex="11" GridPane.valignment="BOTTOM">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="changeGroupName" mnemonicParsing="false" onAction="#changeGroupName" text="change group name" textFill="#112fad" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="addMember" mnemonicParsing="false" onAction="#addMember" prefHeight="30.0" prefWidth="144.0" text="add member" textFill="#112fad">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <GridPane.margin>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.GroupChat">
+   <center>
+      <GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="177.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="1397.0" stroke="BLACK" strokeType="INSIDE" width="1662.0">
+               <fill>
+                  <LinearGradient cycleMethod="REPEAT" endX="0.48958333333333326" endY="0.5104166449922503" startX="0.660037835439046" startY="0.6619318254066238">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.07039999961853027" green="0.38376039266586304" blue="0.8799999952316284" opacity="0.6000000238418579" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.13019999861717224" green="0.9300000071525574" blue="0.48523807525634766" opacity="0.9100000262260437" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <HBox prefHeight="22.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="send" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#send" prefHeight="30.0" prefWidth="60.0" text="send" />
+            <TextField fx:id="message" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="1600.0" promptText="Write a message...">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="598.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="changeGroupName" mnemonicParsing="false" onAction="#changeGroupName" text="change group name" textFill="#180ed1">
+               <VBox.margin>
+                  <Insets left="475.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="listOfMembers" mnemonicParsing="false" onAction="#listOfMembers" prefHeight="26.0" prefWidth="130.0" text="list of members" textFill="#180ed1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="leaveChat" mnemonicParsing="false" onAction="#leaveChat" text="leave chat" textFill="#180ed1">
+               <VBox.margin>
+                  <Insets left="475.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="addMember" mnemonicParsing="false" onAction="#addMember" prefHeight="26.0" prefWidth="110.0" text="add member" textFill="#180ed1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="back" mnemonicParsing="false" onAction="#back" text="back" textFill="#180ed1">
+               <VBox.margin>
+                  <Insets left="475.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="removeMember" mnemonicParsing="false" onAction="#removeMember" prefHeight="26.0" prefWidth="119.0" text="remove member" textFill="#180ed1">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
             <Insets />
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="listOfMembers" mnemonicParsing="false" onAction="#listOfMembers" prefHeight="30.0" prefWidth="144.0" text="list of members" textFill="#112fad" GridPane.rowIndex="2">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="1.0" />
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="144.0" text="back" textFill="#112fad" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="1.0" />
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="leaveChat" mnemonicParsing="false" onAction="#leaveChat" prefHeight="30.0" prefWidth="144.0" text="leave chat" textFill="#112fad" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="1.0" />
-         </GridPane.margin>
-      </Button>
-      <Button fx:id="removeMember" mnemonicParsing="false" onAction="#removeMember" prefHeight="30.0" prefWidth="144.0" text="remove member" textFill="#112fad" GridPane.rowIndex="1">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <GridPane.margin>
-            <Insets top="1.0" />
-         </GridPane.margin>
-      </Button>
-      <Line endX="1800.0" startX="144.0" stroke="#112fad" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-   </children>
-</GridPane>
+         </BorderPane.margin>
+      </VBox>
+   </top>
+</BorderPane>

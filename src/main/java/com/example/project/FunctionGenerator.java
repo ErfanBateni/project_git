@@ -982,7 +982,7 @@ public class FunctionGenerator {
         else {
             System.out.println("This group does not exist.");
         }
-    }
+    } //done
 
     public static void displayGroupMessage (GroupMessage a) {/*
         if (!a.isDeleted) {
@@ -1003,7 +1003,7 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    */}
+    */} //done
 
     public static void replyGroupMessage (User sender, ArrayList<String> text, GroupMessage replied) {/*
         if (!replied.isDeleted) {
