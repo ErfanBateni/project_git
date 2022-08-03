@@ -285,7 +285,13 @@ public class GroupChat {
                     counter--;
                 }
                 else if (counter>=0){
-                    Label yourMessage = new Label(" "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                    Label yourMessage = new Label();
+                    if (Database.groups.get(u).messages.get(i).isEdited){
+                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
+                    }
+                    else {
+                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                    }
                     yourMessage.setFont(Font.font(18));
                     gridPane.add(yourMessage,0,counter);
                     counter--;
@@ -329,7 +335,13 @@ public class GroupChat {
                     counter--;
                 }
                 else if (counter>=0){
-                    Label yourMessage = new Label(" "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                    Label yourMessage = new Label();
+                    if (Database.groups.get(u).messages.get(i).isEdited){
+                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
+                    }
+                    else {
+                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                    }
                     yourMessage.setFont(Font.font(18));
                     gridPane.add(yourMessage,0,counter);
                     counter--;

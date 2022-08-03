@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -28,6 +29,11 @@ public class DirectChat {
             text.append(scanner.nextLine());
         }
         return text.toString();
+    }
+    public static void writeFile(File file, String text, boolean append) throws IOException {
+        FileWriter fileWriter = new FileWriter(file,append);
+        fileWriter.write(text);
+        fileWriter.close();
     }
     int v,vv,u,counter;
 
@@ -62,14 +68,46 @@ public class DirectChat {
         if (Database.directs.get(u).messages.size()>10){
             for (int i=Database.directs.get(u).messages.size()-1; i>=Database.directs.get(u).messages.size()-10; i--){
                 if (counter>=0 && Database.directs.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
-                    Label myMessage = new Label("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    Button edit = new Button("edit");
+                    int finalI = i;
+                    edit.setOnMouseClicked(mouseEvent -> {
+                        File file = new File("D:\\editDirectMessage");
+                        try {
+                            writeFile(file,Database.directs.get(u).messages.get(finalI).textMessage,false);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("editDirectMessage.fxml"));
+                        Scene scene = null;
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 600, 400);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        stage.setScene(scene);
+                        stage.show();
+                    });
+                    gridPane.add(edit,0,counter);
+                    Label myMessage = new Label();
+                    if (Database.directs.get(u).messages.get(i).isEdited){
+                        myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else {
+                        myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
                     GridPane.setHalignment(myMessage, HPos.RIGHT);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,1,counter);
                     counter--;
                 }
                 else if (counter>=0){
-                    Label yourMessage = new Label("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    Label yourMessage = new Label();
+                    if (Database.directs.get(u).messages.get(i).isEdited){
+                        yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else {
+                        yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
                     yourMessage.setFont(Font.font(18));
                     gridPane.add(yourMessage,0,counter);
                     counter--;
@@ -79,14 +117,46 @@ public class DirectChat {
         else {
             for (int i=Database.directs.get(u).messages.size()-1; i>=0; i--){
                 if (counter>=0 && Database.directs.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
-                    Label myMessage = new Label("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    Button edit = new Button("edit");
+                    int finalI = i;
+                    edit.setOnMouseClicked(mouseEvent -> {
+                        File file = new File("D:\\editDirectMessage");
+                        try {
+                            writeFile(file,Database.directs.get(u).messages.get(finalI).textMessage,false);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("editDirectMessage.fxml"));
+                        Scene scene = null;
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 600, 400);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        stage.setScene(scene);
+                        stage.show();
+                    });
+                    gridPane.add(edit,0,counter);
+                    Label myMessage = new Label();
+                    if (Database.directs.get(u).messages.get(i).isEdited){
+                        myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else {
+                        myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
                     GridPane.setHalignment(myMessage, HPos.RIGHT);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,1,counter);
                     counter--;
                 }
                 else if (counter>=0){
-                    Label yourMessage = new Label("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    Label yourMessage = new Label();
+                    if (Database.directs.get(u).messages.get(i).isEdited){
+                        yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else {
+                        yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
                     yourMessage.setFont(Font.font(18));
                     gridPane.add(yourMessage,0,counter);
                     counter--;
