@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CommentGroup extends GroupMessage {
     GroupMessage repliedMessage;
-    public CommentGroup (User sender, ArrayList<String> text, Group receiver, GroupMessage replied) {
+    public CommentGroup (User sender, String text, Group receiver, GroupMessage replied) {
         super(sender, text, receiver);
         this.sender = sender;
         this.textMessage = text;
@@ -19,7 +19,7 @@ public class CommentGroup extends GroupMessage {
         Database.commentGroups.add(this);
         Database.messages.add(this);
     }
-    public CommentGroup (User sender, ArrayList<String> text, int messageNum, boolean isDeleted, boolean isEdited) {
+    public CommentGroup (User sender, String text, int messageNum, boolean isDeleted, boolean isEdited) {
         this.sender = sender;
         this.textMessage = text;
         this.messageNum = messageNum;

@@ -8,9 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -26,6 +28,12 @@ public class Directs {
         }
         return text.toString();
     }
+    public static void writeFile(File file, String text, boolean append) throws IOException {
+        FileWriter fileWriter = new FileWriter(file,append);
+        fileWriter.write(text);
+        fileWriter.close();
+    }
+
     int v,counter;
 
     public void initialize() throws FileNotFoundException {
@@ -40,11 +48,21 @@ public class Directs {
             if (direct.first.equals(Database.users.get(v)) && !Database.users.get(v).blocked.contains(direct.second)){
                 Label name1 = new Label(direct.second.userName);
                 name1.setTextFill(Color.DARKBLUE);
+                name1.setFont(Font.font(20));
                 GridPane.setHalignment(name1, HPos.RIGHT);
                 gridPane.add(name1,0,counter);
                 Button insideDirect = new Button("  inside direct");
                 insideDirect.setOnMouseClicked(mouseEvent -> {
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("chat.fxml"));
+                    File file = new File("D:\\secondUser");
+                    try {
+                        if (readFile(new File("D:\\usernameLogin")).equals(direct.first.userName)) {
+                            writeFile(file,direct.second.userName,false);
+                        }
+                        else writeFile(file,direct.first.userName,false);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("directChat.fxml"));
                     Scene scene = null;
                     try {
                         scene = new Scene(fxmlLoader.load(), 600, 400);
@@ -57,14 +75,24 @@ public class Directs {
                 gridPane.add(insideDirect,0,counter);
                 counter++;
             }
-            else if (!Database.users.get(v).blocked.contains(direct.first)){
+            else if (direct.second.equals(Database.users.get(v)) && !Database.users.get(v).blocked.contains(direct.first)){
                 Label name2 = new Label(direct.first.userName);
                 name2.setTextFill(Color.DARKBLUE);
+                name2.setFont(Font.font(20));
                 GridPane.setHalignment(name2, HPos.RIGHT);
                 gridPane.add(name2,0,counter);
                 Button insideDirect = new Button("  inside direct");
                 insideDirect.setOnMouseClicked(mouseEvent -> {
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("chat.fxml"));
+                    File file = new File("D:\\secondUser");
+                    try {
+                        if (readFile(new File("D:\\usernameLogin")).equals(direct.first.userName)) {
+                            writeFile(file,direct.second.userName,false);
+                        }
+                        else writeFile(file,direct.first.userName,false);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("directChat.fxml"));
                     Scene scene = null;
                     try {
                         scene = new Scene(fxmlLoader.load(), 600, 400);

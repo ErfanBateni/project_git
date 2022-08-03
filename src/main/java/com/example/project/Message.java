@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Message {
     User sender;
-    ArrayList<String> textMessage = new ArrayList<>();
+    String textMessage;
     int messageNum;
     boolean isDeleted;
     boolean isEdited;

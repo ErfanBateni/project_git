@@ -125,10 +125,10 @@ public class Controller {
 
         if (x.equals("New Post") || x.equals("new post")) {
             System.out.println("Please write what you want to post.");
-            String s = scanner.nextLine();
-            String[] f = s.split(" ");
-            ArrayList<String> text = new ArrayList<>();
-            text.addAll(Arrays.asList(f));
+            String text = scanner.nextLine();
+            //String[] f = s.split(" ");
+            //ArrayList<String> text = new ArrayList<>();
+            //text.addAll(Arrays.asList(f));
             FunctionGenerator.sendPost(Database.users.get(v), text);
             Controller.timeline();
         }
@@ -355,9 +355,9 @@ public class Controller {
                     Controller.directInteraction(Database.directs.get(s), Database.directs.get(s).messages.size() - 1);
                 } else {
                     System.out.println("Please send your first message to this user.");
-                    String f = scanner.nextLine();
-                    String[] texxt = f.split(" ");
-                    ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
+                    String text = scanner.nextLine();
+                    //String[] texxt = f.split(" ");
+                    //ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
                     FunctionGenerator.sendDirectMessage(text, Database.users.get(n));
                     Controller.directs();
                 }
@@ -475,9 +475,9 @@ public class Controller {
         }
         if (x.equals("Send") || x.equals("send") || x.equals("Post") || x.equals("post")) {
             System.out.println("Please write your message.");
-            String f = scanner.nextLine();
-            String[] texxt = f.split(" ");
-            ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
+            String text = scanner.nextLine();
+            //String[] texxt = f.split(" ");
+            //ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
             if (a.first.userName.equals(Controller.currentUser)) {
                 FunctionGenerator.sendDirectMessage(text, a.second);
             }
@@ -635,9 +635,9 @@ public class Controller {
                 if (exists) {
                     if (Database.users.get(v).groups.get(n).messages.size() == 0) {
                         System.out.println("This group has no messages yet. Please send the first message.");
-                        String s = scanner.nextLine();
-                        String[] texxt = s.split(" ");
-                        ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
+                        String text = scanner.nextLine();
+                        //String[] texxt = s.split(" ");
+                        //ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
                         FunctionGenerator.sendGroupMessage(text, Database.users.get(v).groups.get(n).groupName);
                         Controller.groupInteraction(Database.users.get(v).groups.get(n), Database.users.get(v).groups.get(n).messages.size() - 1);
                     } else {
@@ -734,9 +734,9 @@ public class Controller {
         }
         if (x.equals("Send") || x.equals("send") || x.equals("Post") || x.equals("post")) {
             System.out.println("Please write your message.");
-            String f = scanner.nextLine();
-            String[] texxt = f.split(" ");
-            ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
+            String text = scanner.nextLine();
+            //String[] texxt = f.split(" ");
+            //ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
             FunctionGenerator.sendGroupMessage(text, a.groupName);
             Controller.groupInteraction(a, index);
         }
@@ -955,9 +955,9 @@ public class Controller {
             System.out.println("What is the name of your product?");
             String name = scanner.nextLine();
             System.out.println("Please write a description for your product.");
-            String s = scanner.nextLine();
-            String[] texxt = s.split(" ");
-            ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
+            String text = scanner.nextLine();
+            //String[] texxt = s.split(" ");
+            //ArrayList<String> text = new ArrayList<>(Arrays.asList(texxt));
             System.out.println("Please enter the product's price.");
             int price = scanner.nextInt();
             scanner.nextLine();

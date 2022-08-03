@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CommentPost extends Post {
     Post repliedMessage;
-    public CommentPost (User sender, ArrayList<String> text, Post replied) {
+    public CommentPost (User sender, String text, Post replied) {
         super(sender, text);
         this.sender = sender;
         this.textMessage = text;
@@ -17,7 +17,7 @@ public class CommentPost extends Post {
         Database.commentPosts.add(this);
         Database.messages.add(this);
     }
-    public CommentPost (User sender, ArrayList<String> text, int messageNum, boolean isDeleted, boolean isEdited) {
+    public CommentPost (User sender, String text, int messageNum, boolean isDeleted, boolean isEdited) {
         super();
         this.sender = sender;
         this.textMessage = text;

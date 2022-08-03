@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CommentDirect extends DirectMessage {
     DirectMessage repliedMessage;
-    public CommentDirect (User sender, ArrayList<String> text, Direct receiver, DirectMessage replied) {
+    public CommentDirect (User sender, String text, Direct receiver, DirectMessage replied) {
         super(sender, text, receiver);
         this.sender = sender;
         this.textMessage = text;
@@ -19,7 +19,7 @@ public class CommentDirect extends DirectMessage {
         Database.commentDirects.add(this);
         Database.messages.add(this);
     }
-    public CommentDirect (User sender, ArrayList<String> text, int messageNum, boolean isDeleted, boolean isEdited) {
+    public CommentDirect (User sender, String text, int messageNum, boolean isDeleted, boolean isEdited) {
         this.sender = sender;
         this.textMessage = text;
         this.messageNum = messageNum;

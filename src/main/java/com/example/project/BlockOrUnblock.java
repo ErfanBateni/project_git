@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -38,6 +39,7 @@ public class BlockOrUnblock {
         for (User user : Database.users.get(v).blocked){
             Label name1 = new Label(user.userName);
             name1.setTextFill(Color.DARKBLUE);
+            name1.setFont(Font.font(25));
             GridPane.setHalignment(name1, HPos.RIGHT);
             gridPane.add(name1,0,counter);
             Button unblocked = new Button("  unblock");
@@ -51,11 +53,14 @@ public class BlockOrUnblock {
             if (!user.equals(Database.users.get(v)) && !Database.users.get(v).blocked.contains(user)){
                 Label name2 = new Label(user.userName);
                 name2.setTextFill(Color.DARKBLUE);
+                name2.setFont(Font.font(25));
                 GridPane.setHalignment(name2, HPos.RIGHT);
                 gridPane.add(name2,0,counter);
                 Button blocked = new Button("  block");
                 blocked.setOnMouseClicked(mouseEvent -> {
-                    Database.users.get(v).blocked.add(user);
+                    if (!Database.users.get(v).blocked.contains(user)){
+                        Database.users.get(v).blocked.add(user);
+                    }
                 });
                 gridPane.add(blocked,0,counter);
                 counter++;

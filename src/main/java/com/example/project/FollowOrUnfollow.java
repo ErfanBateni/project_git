@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,6 +35,7 @@ public class FollowOrUnfollow {
                     if (!user1.userName.equals(readFile(new File("D:\\usernameLogin")))){
                         Label name1 = new Label(user1.userName);
                         name1.setTextFill(Color.WHITE);
+                        name1.setFont(Font.font(25));
                         GridPane.setHalignment(name1, HPos.RIGHT);
                         gridPane.add(name1,0,counter);
                         Button unfollow = new Button("  unfollow");
@@ -50,15 +53,18 @@ public class FollowOrUnfollow {
         for (User user : Database.users){
             if (user.userName.equals(readFile(new File("D:\\usernameLogin")))){
                 for (User user1 : Database.users){
-                    if (!user.followings.contains(user1) && !user1.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                    if (!user.blocked.contains(user1) && !user.followings.contains(user1) && !user1.userName.equals(readFile(new File("D:\\usernameLogin")))){
                         Label name2 = new Label(user1.userName);
                         name2.setTextFill(Color.WHITE);
+                        name2.setFont(Font.font(25));
                         GridPane.setHalignment(name2, HPos.RIGHT);
                         gridPane.add(name2,0,counter);
                         Button unfollow = new Button("  follow");
                         unfollow.setOnMouseClicked(mouseEvent -> {
-                            user.followings.add(user1);
-                            user1.followers.add(user);
+                            if (!user.followings.contains(user1) && !user1.followers.contains(user)){
+                                user.followings.add(user1);
+                                user1.followers.add(user);
+                            }
                         });
                         gridPane.add(unfollow,0,counter);
                         counter++;

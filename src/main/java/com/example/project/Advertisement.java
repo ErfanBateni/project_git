@@ -9,7 +9,7 @@ public class Advertisement extends Message {
     int discountPercentage;
     ArrayList<User> seen = new ArrayList<>();
 
-    public Advertisement(User sender, ArrayList<String> text, String name,
+    public Advertisement(User sender, String text, String name,
                          int price, boolean isDiscount, int percent) {
         this.sender = sender;
         this.textMessage = text;
@@ -24,7 +24,7 @@ public class Advertisement extends Message {
         Database.advertisements.add(this);
         Database.messages.add(this);
     }
-    public Advertisement (User sender, ArrayList<String> text, int messageNum, String name, int price, boolean isDiscount,
+    public Advertisement (User sender, String text, int messageNum, String name, int price, boolean isDiscount,
                           boolean isDeleted, boolean isEdited, int percent) {
         this.sender = sender;
         this.textMessage = text;

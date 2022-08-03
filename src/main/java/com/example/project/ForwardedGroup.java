@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ForwardedGroup extends GroupMessage {
     Message forwardedMessage;
-    public ForwardedGroup (User sender, ArrayList<String> text, Group receiver, Message forwarded) {
+    public ForwardedGroup (User sender, String text, Group receiver, Message forwarded) {
         super(sender, text, receiver);
         this.sender = sender;
         this.textMessage = text;
@@ -18,7 +18,7 @@ public class ForwardedGroup extends GroupMessage {
         Database.forwardedMessageGroups.add(this);
         Database.messages.add(this);
     }
-    public ForwardedGroup (User sender, ArrayList<String> text, int messageNum, boolean isDeleted, boolean isEdited) {
+    public ForwardedGroup (User sender, String text, int messageNum, boolean isDeleted, boolean isEdited) {
         this.sender = sender;
         this.textMessage = text;
         this.messageNum = messageNum;

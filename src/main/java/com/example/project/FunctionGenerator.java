@@ -253,7 +253,7 @@ public class FunctionGenerator {
 
 
 
-    public static void editMessage (ArrayList<String> text, Message edited) {
+    public static void editMessage (ArrayList<String> text, Message edited) {/*
         if (!edited.isDeleted) {
             if (Controller.currentUser.equals(edited.sender.userName)) {
                 if ((edited instanceof Post && ! (edited instanceof CommentPost)) || edited instanceof Advertisement) {
@@ -299,9 +299,9 @@ public class FunctionGenerator {
                 System.out.println("You can not edit the message you did not send.");
             }
         }
-    }
+    */}
 
-    public static void deleteMessage (User a, Message deleted) {
+    public static void deleteMessage (User a, Message deleted) {/*
         if (deleted instanceof DirectMessage) {
             if (deleted.sender.equals(a)) {
                 deleted.isDeleted = true;
@@ -355,7 +355,7 @@ public class FunctionGenerator {
                 System.out.println("You are not either an admin or the sender of this message.");
             }
         }
-    }
+    */}
 
 
 
@@ -564,7 +564,7 @@ public class FunctionGenerator {
 
 
 
-    public static void displayMessage (Message a) {
+    public static void displayMessage (Message a) {/*
         if (!a.isDeleted) {
             System.out.println(a.sender.userName + "\n");
             for (int i = 0; i < a.textMessage.size(); i++) {
@@ -575,14 +575,14 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    }
+    */}
 
-    public static void sendPost (User sender, ArrayList<String> text) {
+    public static void sendPost (User sender, String text) {
         Post newPost = new Post(sender, text);
         System.out.println("Your post has been uploaded successfully.");
     }
 
-    public static void displayPost (Post a) {
+    public static void displayPost (Post a) {/*
         if (!a.isDeleted) {
             System.out.println(a.sender.userName + "\n");
             for (int i = 0; i < a.textMessage.size(); i++) {
@@ -593,9 +593,9 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    }
+    */}
 
-    public static void displayRepliesPost (Post a) {
+    public static void displayRepliesPost (Post a) {/*
         if (!a.isDeleted) {
             for (int i = a.replies.size() - 1; i >= 0; i--) {
                 if (!a.replies.get(i).isDeleted) {
@@ -617,9 +617,9 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    }
+    */}
 
-    public static void replyPost (User sender, ArrayList<String> text, Post replied) {
+    public static void replyPost (User sender, ArrayList<String> text, Post replied) {/*
         if (!replied.isDeleted) {
             ArrayList<String> repliedText = new ArrayList<>();
             repliedText.add("Replied");
@@ -639,11 +639,11 @@ public class FunctionGenerator {
             CommentPost newCommentPost = new CommentPost(sender, repliedText, replied);
             System.out.println("Your reply has been uploaded successfully.");
         }
-    }
+    */}
 
 
 
-    public static void sendAdvertisement (User sender, ArrayList<String> text, String name, int price,
+    public static void sendAdvertisement (User sender, String text, String name, int price,
                                           boolean isDiscount, int percent) {
         if (sender.userType) {
             Advertisement newAdvertisement = new Advertisement(sender, text, name, price, isDiscount, percent);
@@ -654,7 +654,7 @@ public class FunctionGenerator {
         }
     }
 
-    public static void displayAdvertisement (Advertisement a) {
+    public static void displayAdvertisement (Advertisement a) {/*
         if (!a.isDeleted) {
             int v = 0;
             for (int i = 0; i < Database.users.size(); i++) {
@@ -683,7 +683,7 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    }
+    */}
 
 
 
@@ -719,7 +719,7 @@ public class FunctionGenerator {
         }
     } //done
 
-    public static void sendDirectMessage (ArrayList<String> text, User second) {
+    public static void sendDirectMessage (String text, User second) {
         int v = 0, u = 0;
         for (int i = 0; i < Database.users.size(); i++) {
             if (Controller.currentUser.equals(Database.users.get(i).userName)) {
@@ -741,7 +741,7 @@ public class FunctionGenerator {
         else {
             System.out.println("You have not already started a conversation with this user.");
         }
-    }
+    } //done
 
 
     public static void suggestUser (User a) {
@@ -839,7 +839,7 @@ public class FunctionGenerator {
 
 
 
-    public static void displayDirectMessage (DirectMessage a) {
+    public static void displayDirectMessage (DirectMessage a) {/*
         if (!a.isDeleted) {
             if (a.sender.userName.equals(Controller.currentUser)) {
                 System.out.println("You said: \n");
@@ -859,9 +859,9 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    }
+    */} //done
 
-    public static void replyDirectMessage (User sender, ArrayList<String> text, DirectMessage replied) {
+    public static void replyDirectMessage (User sender, ArrayList<String> text, DirectMessage replied) {/*
         if (!replied.isDeleted) {
             int v = 0;
             for (int i = 0; i < Database.directs.size(); i++) {
@@ -914,9 +914,9 @@ public class FunctionGenerator {
             CommentDirect newCommentDirect = new CommentDirect(sender, repliedText, Database.directs.get(v) ,replied);
             System.out.println("Your reply has been uploaded successfully.");
         }
-    }
+    */}
 
-    public static void forwardToDirect (User sender, Direct receiver, Message forwarded) {
+    public static void forwardToDirect (User sender, Direct receiver, Message forwarded) {/*
         if (!forwarded.isDeleted) {
             ArrayList<String> repliedText = new ArrayList<>();
             repliedText.add("Forwarded");
@@ -936,7 +936,7 @@ public class FunctionGenerator {
             }
             ForwardedDirect newForwardedDirect = new ForwardedDirect(sender, repliedText, receiver, forwarded);
         }
-    }
+    */}
 
 
 
@@ -960,7 +960,7 @@ public class FunctionGenerator {
         }
     } //done
 
-    public static void sendGroupMessage (ArrayList<String> text, String receiver) {
+    public static void sendGroupMessage (String text, String receiver) {
         boolean groupExists = false;  int v = 0, u = 0;
         for (int i = 0; i < Database.users.size(); i++) {
             if (Controller.currentUser.equals(Database.users.get(i).userName)) {
@@ -984,7 +984,7 @@ public class FunctionGenerator {
         }
     }
 
-    public static void displayGroupMessage (GroupMessage a) {
+    public static void displayGroupMessage (GroupMessage a) {/*
         if (!a.isDeleted) {
             if (a.sender.userName.equals(Controller.currentUser)) {
                 System.out.println("You said: \n");
@@ -1003,9 +1003,9 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    }
+    */}
 
-    public static void replyGroupMessage (User sender, ArrayList<String> text, GroupMessage replied) {
+    public static void replyGroupMessage (User sender, ArrayList<String> text, GroupMessage replied) {/*
         if (!replied.isDeleted) {
             int v = 0;
             for (int i = 0; i < Database.groups.size(); i++) {
@@ -1058,9 +1058,9 @@ public class FunctionGenerator {
             CommentGroup newCommentGroup = new CommentGroup(sender, repliedText, Database.groups.get(v) ,replied);
             System.out.println("Your reply has been uploaded successfully.");
         }
-    }
+    */}
 
-    public static void forwardToGroup (User sender, Group receiver, Message forwarded) {
+    public static void forwardToGroup (User sender, Group receiver, Message forwarded) {/*
         if (!forwarded.isDeleted) {
             ArrayList<String> repliedText = new ArrayList<>();
             repliedText.add("Forwarded");
@@ -1082,6 +1082,6 @@ public class FunctionGenerator {
 
             ForwardedGroup newForwardedGroup = new ForwardedGroup (sender, repliedText, receiver, forwarded);
         }
-    }
+    */}
 }
 

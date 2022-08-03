@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ForwardedDirect extends DirectMessage {
     Message forwardedMessage;
-    public ForwardedDirect (User sender, ArrayList<String> text, Direct receiver, Message forwarded) {
+    public ForwardedDirect (User sender, String text, Direct receiver, Message forwarded) {
         super(sender, text, receiver);
         this.sender = sender;
         this.textMessage = text;
@@ -18,7 +18,7 @@ public class ForwardedDirect extends DirectMessage {
         Database.forwardedMessageDirects.add(this);
         Database.messages.add(this);
     }
-    public ForwardedDirect (User sender, ArrayList<String> text, int messageNum, boolean isDeleted, boolean isEdited) {
+    public ForwardedDirect (User sender, String text, int messageNum, boolean isDeleted, boolean isEdited) {
         this.sender = sender;
         this.textMessage = text;
         this.messageNum = messageNum;
