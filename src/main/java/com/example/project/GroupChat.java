@@ -16,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import static com.example.project.HelloApplication.stage;
@@ -30,6 +31,11 @@ public class GroupChat {
             text.append(scanner.nextLine());
         }
         return text.toString();
+    }
+    public static void writeFile(File file, String text, boolean append) throws IOException {
+        FileWriter fileWriter = new FileWriter(file,append);
+        fileWriter.write(text);
+        fileWriter.close();
     }
     int v,u,counter;
 
@@ -236,33 +242,43 @@ public class GroupChat {
         rectangle.setFill(Color.LIGHTBLUE);
         gridPane.add(rectangle,0,0);
         counter=6;
-        /*String groupName = readFile(new File("D:\\groupName"));
+        String groupName = readFile(new File("D:\\groupName"));
         Label namegroup = new Label();
         namegroup.setText(groupName);
         namegroup.setTextFill(Color.DARKBLUE);
         namegroup.setFont(Font.font(40));
-        vbox.getChildren().add(namegroup);*/
+        GridPane.setHalignment(namegroup,HPos.CENTER);
+        gridPane.add(namegroup,1,0);
         if (Database.groups.get(u).messages.size()>7){
             for (int i=Database.groups.get(u).messages.size()-1; i>=Database.groups.get(u).messages.size()-7; i--){
                 if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
-                    Label myMessage = new Label(Database.groups.get(u).messages.get(i).textMessage+"  ");
-                    GridPane.setHalignment(myMessage, HPos.RIGHT);
-                    myMessage.setFont(Font.font(18));
-                    gridPane.add(myMessage,2,counter);
-                    counter--;
-                }
-                else if (counter>=0){
-                    Label yourMessage = new Label(" "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage+"  ");
-                    yourMessage.setFont(Font.font(18));
-                    gridPane.add(yourMessage,0,counter);
-                    counter--;
-                }
-            }
-        }
-        else {
-            for (int i=Database.groups.get(u).messages.size()-1; i>=0; i--){
-                if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
-                    Label myMessage = new Label(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    Button edit = new Button("edit");
+                    int finalI = i;
+                    edit.setOnMouseClicked(mouseEvent -> {
+                        File file = new File("D:\\editMessage");
+                        try {
+                            writeFile(file,Database.groups.get(u).messages.get(finalI).textMessage,false);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("editGroupMessage.fxml"));
+                        Scene scene = null;
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 600, 400);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        stage.setScene(scene);
+                        stage.show();
+                    });
+                    gridPane.add(edit,0,counter);
+                    Label myMessage = new Label();
+                    if (Database.groups.get(u).messages.get(i).isEdited){
+                        myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else {
+                        myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    }
                     GridPane.setHalignment(myMessage, HPos.RIGHT);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,2,counter);
@@ -274,8 +290,51 @@ public class GroupChat {
                     gridPane.add(yourMessage,0,counter);
                     counter--;
                 }
+
+            }
+        }
+        else {
+            for (int i=Database.groups.get(u).messages.size()-1; i>=0; i--){
+                if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                    Label myMessage = new Label();
+                    if (Database.groups.get(u).messages.get(i).isEdited){
+                        myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else {
+                        myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    GridPane.setHalignment(myMessage, HPos.RIGHT);
+                    myMessage.setFont(Font.font(18));
+                    gridPane.add(myMessage,2,counter);
+                    Button edit = new Button("edit");
+                    int finalI = i;
+                    edit.setOnMouseClicked(mouseEvent -> {
+                        File file = new File("D:\\editMessage");
+                        try {
+                            writeFile(file,Database.groups.get(u).messages.get(finalI).textMessage,false);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("editGroupMessage.fxml"));
+                        Scene scene = null;
+                        try {
+                            scene = new Scene(fxmlLoader.load(), 600, 400);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        stage.setScene(scene);
+                        stage.show();
+                    });
+                    gridPane.add(edit,0,counter);
+                    counter--;
+                }
+                else if (counter>=0){
+                    Label yourMessage = new Label(" "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                    yourMessage.setFont(Font.font(18));
+                    gridPane.add(yourMessage,0,counter);
+                    counter--;
+                }
             }
         }
     }
-
 }
