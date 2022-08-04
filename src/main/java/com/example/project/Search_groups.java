@@ -55,6 +55,7 @@ public class Search_groups {
                                 Label joined = new Label();
                                 joined.setText("You are now a member of this group.");
                                 joined.setTextFill(Color.LIGHTGREEN);
+                                joined.setFont(Font.font(18));
                                 joined.relocate(180,235);
                                 anchorPane.getChildren().add(joined);
                             }

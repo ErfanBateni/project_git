@@ -230,10 +230,8 @@ public class GroupChat {
                 break;
             }
         }
-        boolean groupExists = false;
         for (int i = 0; i < Database.groups.size(); i++) {
             if (Database.groups.get(i).groupName.equals(readFile(new File("D:\\groupName")))){
-                groupExists = true;
                 u=i;
             }
         }
@@ -272,6 +270,7 @@ public class GroupChat {
                         stage.show();
                     });
                     gridPane.add(edit,0,counter);
+
                     Button delete = new Button("delete");
                     int finalI1 = i;
                     delete.setOnMouseClicked(mouseEvent -> {
@@ -285,12 +284,26 @@ public class GroupChat {
                     });
                     GridPane.setHalignment(delete,HPos.CENTER);
                     gridPane.add(delete,0,counter);
+
+                    Button reply = new Button("reply");
+                    int finalI2 = i;
+                    reply.setOnMouseClicked(mouseEvent -> {
+                        Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI2).textMessage+")";
+                        try {
+                            initialize();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    GridPane.setHalignment(reply,HPos.RIGHT);
+                    gridPane.add(reply,0,counter);
+
                     Label myMessage = new Label();
                     if (Database.groups.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
                     }
                     else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("was deleted!  ");
+                        myMessage.setText("Deleted message  ");
                     }
                     else {
                         myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
@@ -298,6 +311,7 @@ public class GroupChat {
                     GridPane.setHalignment(myMessage, HPos.RIGHT);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,2,counter);
+
                     counter--;
                 }
                 else if (counter>=0){
@@ -306,13 +320,27 @@ public class GroupChat {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
                     }
                     else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  was deleted!");
+                        yourMessage.setText("  Deleted message");
                     }
                     else {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
                     }
                     yourMessage.setFont(Font.font(18));
                     gridPane.add(yourMessage,0,counter);
+                    if (!Database.groups.get(u).messages.get(i).isDeleted){
+                        Button reply = new Button("reply ");
+                        int finalI3 = i;
+                        reply.setOnMouseClicked(mouseEvent -> {
+                            Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI3).textMessage+")";
+                            try {
+                                initialize();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        GridPane.setHalignment(reply,HPos.RIGHT);
+                        gridPane.add(reply,2,counter);
+                    }
                     counter--;
                 }
 
@@ -321,12 +349,13 @@ public class GroupChat {
         else {
             for (int i=Database.groups.get(u).messages.size()-1; i>=0; i--){
                 if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+
                     Label myMessage = new Label();
                     if (Database.groups.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
                     }
                     else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("was deleted!  ");
+                        myMessage.setText("Deleted message  ");
                     }
                     else {
                         myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
@@ -334,6 +363,7 @@ public class GroupChat {
                     GridPane.setHalignment(myMessage, HPos.RIGHT);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,2,counter);
+
                     Button edit = new Button("edit");
                     int finalI = i;
                     edit.setOnMouseClicked(mouseEvent -> {
@@ -353,6 +383,8 @@ public class GroupChat {
                         stage.setScene(scene);
                         stage.show();
                     });
+                    gridPane.add(edit,0,counter);
+
                     Button delete = new Button("delete");
                     int finalI1 = i;
                     delete.setOnMouseClicked(mouseEvent -> {
@@ -366,7 +398,20 @@ public class GroupChat {
                     });
                     GridPane.setHalignment(delete,HPos.CENTER);
                     gridPane.add(delete,0,counter);
-                    gridPane.add(edit,0,counter);
+
+                    Button reply = new Button("reply");
+                    int finalI2 = i;
+                    reply.setOnMouseClicked(mouseEvent -> {
+                        Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI2).textMessage+")";
+                        try {
+                            initialize();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    GridPane.setHalignment(reply,HPos.RIGHT);
+                    gridPane.add(reply,0,counter);
+
                     counter--;
                 }
                 else if (counter>=0){
@@ -375,13 +420,27 @@ public class GroupChat {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
                     }
                     else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  was deleted!  ");
+                        yourMessage.setText("  Deleted message");
                     }
                     else {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
                     }
                     yourMessage.setFont(Font.font(18));
                     gridPane.add(yourMessage,0,counter);
+                    if (!Database.groups.get(u).messages.get(i).isDeleted){
+                        Button reply = new Button("reply ");
+                        int finalI3 = i;
+                        reply.setOnMouseClicked(mouseEvent -> {
+                            Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI3).textMessage+")";
+                            try {
+                                initialize();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        GridPane.setHalignment(reply,HPos.RIGHT);
+                        gridPane.add(reply,2,counter);
+                    }
                     counter--;
                 }
             }
