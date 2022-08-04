@@ -914,7 +914,7 @@ public class FunctionGenerator {
             CommentDirect newCommentDirect = new CommentDirect(sender, repliedText, Database.directs.get(v) ,replied);
             System.out.println("Your reply has been uploaded successfully.");
         }
-    */}
+    */} //done
 
     public static void forwardToDirect (User sender, Direct receiver, Message forwarded) {/*
         if (!forwarded.isDeleted) {
@@ -1058,7 +1058,7 @@ public class FunctionGenerator {
             CommentGroup newCommentGroup = new CommentGroup(sender, repliedText, Database.groups.get(v) ,replied);
             System.out.println("Your reply has been uploaded successfully.");
         }
-    */}
+    */} //done
 
     public static void forwardToGroup (User sender, Group receiver, Message forwarded) {/*
         if (!forwarded.isDeleted) {

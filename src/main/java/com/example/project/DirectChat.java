@@ -51,11 +51,9 @@ public class DirectChat {
                 break;
             }
         }
-        boolean directExits = false;
         for (int i = 0; i < Database.directs.size(); i++) {
             if ( (Database.users.get(v).userName.equals(Database.directs.get(i).first.userName) && Database.users.get(vv).userName.equals(Database.directs.get(i).second.userName)) ||
                     (Database.users.get(v).userName.equals(Database.directs.get(i).second.userName) && Database.users.get(vv).userName.equals(Database.directs.get(i).first.userName)) ) {
-                directExits = true;
                 u=i;
             }
         }
@@ -68,6 +66,7 @@ public class DirectChat {
         if (Database.directs.get(u).messages.size()>10){
             for (int i=Database.directs.get(u).messages.size()-1; i>=Database.directs.get(u).messages.size()-10; i--){
                 if (counter>=0 && Database.directs.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+
                     Button edit = new Button("edit");
                     int finalI = i;
                     edit.setOnMouseClicked(mouseEvent -> {
@@ -88,11 +87,17 @@ public class DirectChat {
                         stage.show();
                     });
                     gridPane.add(edit,0,counter);
+
                     Button delete = new Button("delete");
                     int finalI1 = i;
                     delete.setOnMouseClicked(mouseEvent -> {
                         Database.directs.get(u).messages.get(finalI1).isDeleted = true;
                         Database.directs.get(u).messages.get(finalI1).isEdited = false;
+                        for (Message message : Database.directs.get(u).messages){
+                            if (!message.textMessage.equals(Database.directs.get(u).messages.get(finalI1).textMessage) && message.textMessage.contains(Database.directs.get(u).messages.get(finalI1).textMessage)){
+                                message.textMessage = message.textMessage.replaceAll(Database.directs.get(u).messages.get(finalI1).textMessage,"Deleted message");
+                            }
+                        }
                         try {
                             initialize();
                         } catch (FileNotFoundException e) {
@@ -101,12 +106,28 @@ public class DirectChat {
                     });
                     GridPane.setHalignment(delete,HPos.CENTER);
                     gridPane.add(delete,0,counter);
+
+                    if (!Database.directs.get(u).messages.get(i).isDeleted){
+                        Button reply = new Button("reply");
+                        int finalI2 = i;
+                        reply.setOnMouseClicked(mouseEvent -> {
+                            Database.directs.get(u).messages.get(Database.directs.get(u).messages.size()-1).textMessage = Database.directs.get(u).messages.get(Database.directs.get(u).messages.size()-1).textMessage+" (replied to "+Database.directs.get(u).messages.get(finalI2).textMessage+")";
+                            try {
+                                initialize();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        GridPane.setHalignment(reply,HPos.RIGHT);
+                        gridPane.add(reply,0,counter);
+                    }
+
                     Label myMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
                     }
                     else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("was deleted!  ");
+                        myMessage.setText("Deleted message  ");
                     }
                     else {
                         myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -117,12 +138,27 @@ public class DirectChat {
                     counter--;
                 }
                 else if (counter>=0){
+                    if (!Database.directs.get(u).messages.get(i).isDeleted) {
+                        Button reply = new Button("reply");
+                        int finalI3 = i;
+                        reply.setOnMouseClicked(mouseEvent -> {
+                            Database.directs.get(u).messages.get(Database.directs.get(u).messages.size() - 1).textMessage = Database.directs.get(u).messages.get(Database.directs.get(u).messages.size() - 1).textMessage + " (replied to " + Database.directs.get(u).messages.get(finalI3).textMessage + ")";
+                            try {
+                                initialize();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        GridPane.setHalignment(reply, HPos.RIGHT);
+                        gridPane.add(reply, 1, counter);
+                    }
+
                     Label yourMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
                     }
                     else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  was deleted!  ");
+                        yourMessage.setText("  Deleted message");
                     }
                     else {
                         yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -136,6 +172,7 @@ public class DirectChat {
         else {
             for (int i=Database.directs.get(u).messages.size()-1; i>=0; i--){
                 if (counter>=0 && Database.directs.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+
                     Button edit = new Button("edit");
                     int finalI = i;
                     edit.setOnMouseClicked(mouseEvent -> {
@@ -156,11 +193,17 @@ public class DirectChat {
                         stage.show();
                     });
                     gridPane.add(edit,0,counter);
+
                     Button delete = new Button("delete");
                     int finalI1 = i;
                     delete.setOnMouseClicked(mouseEvent -> {
                         Database.directs.get(u).messages.get(finalI1).isDeleted = true;
                         Database.directs.get(u).messages.get(finalI1).isEdited = false;
+                        for (Message message : Database.directs.get(u).messages){
+                            if (!message.textMessage.equals(Database.directs.get(u).messages.get(finalI1).textMessage) && message.textMessage.contains(Database.directs.get(u).messages.get(finalI1).textMessage)){
+                                message.textMessage = message.textMessage.replaceAll(Database.directs.get(u).messages.get(finalI1).textMessage,"Deleted message");
+                            }
+                        }
                         try {
                             initialize();
                         } catch (FileNotFoundException e) {
@@ -169,12 +212,28 @@ public class DirectChat {
                     });
                     GridPane.setHalignment(delete,HPos.CENTER);
                     gridPane.add(delete,0,counter);
+
+                    if (!Database.directs.get(u).messages.get(i).isDeleted) {
+                        Button reply = new Button("reply");
+                        int finalI2 = i;
+                        reply.setOnMouseClicked(mouseEvent -> {
+                            Database.directs.get(u).messages.get(Database.directs.get(u).messages.size() - 1).textMessage = Database.directs.get(u).messages.get(Database.directs.get(u).messages.size() - 1).textMessage + " (replied to " + Database.directs.get(u).messages.get(finalI2).textMessage + ")";
+                            try {
+                                initialize();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        GridPane.setHalignment(reply, HPos.RIGHT);
+                        gridPane.add(reply, 0, counter);
+                    }
+
                     Label myMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
                     }
                     else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("was deleted!  ");
+                        myMessage.setText("Deleted message  ");
                     }
                     else {
                         myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -185,12 +244,27 @@ public class DirectChat {
                     counter--;
                 }
                 else if (counter>=0){
+                    if (!Database.directs.get(u).messages.get(i).isDeleted) {
+                        Button reply = new Button("reply");
+                        int finalI3 = i;
+                        reply.setOnMouseClicked(mouseEvent -> {
+                            Database.directs.get(u).messages.get(Database.directs.get(u).messages.size() - 1).textMessage = Database.directs.get(u).messages.get(Database.directs.get(u).messages.size() - 1).textMessage + " (replied to " + Database.directs.get(u).messages.get(finalI3).textMessage + ")";
+                            try {
+                                initialize();
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        GridPane.setHalignment(reply, HPos.RIGHT);
+                        gridPane.add(reply, 1, counter);
+                    }
+
                     Label yourMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
                     }
                     else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  was deleted!  ");
+                        yourMessage.setText("  Deleted message");
                     }
                     else {
                         yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
