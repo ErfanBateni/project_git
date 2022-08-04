@@ -306,7 +306,7 @@ public class GroupChat {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
                     }
                     else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("was deleted!  ");
+                        yourMessage.setText("  was deleted!");
                     }
                     else {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
@@ -375,7 +375,7 @@ public class GroupChat {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
                     }
                     else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("was deleted!  ");
+                        yourMessage.setText("  was deleted!  ");
                     }
                     else {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);

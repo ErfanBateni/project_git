@@ -88,9 +88,25 @@ public class DirectChat {
                         stage.show();
                     });
                     gridPane.add(edit,0,counter);
+                    Button delete = new Button("delete");
+                    int finalI1 = i;
+                    delete.setOnMouseClicked(mouseEvent -> {
+                        Database.directs.get(u).messages.get(finalI1).isDeleted = true;
+                        Database.directs.get(u).messages.get(finalI1).isEdited = false;
+                        try {
+                            initialize();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    GridPane.setHalignment(delete,HPos.CENTER);
+                    gridPane.add(delete,0,counter);
                     Label myMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else if (Database.directs.get(u).messages.get(i).isDeleted){
+                        myMessage.setText("was deleted!  ");
                     }
                     else {
                         myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -104,6 +120,9 @@ public class DirectChat {
                     Label yourMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else if (Database.directs.get(u).messages.get(i).isDeleted){
+                        yourMessage.setText("  was deleted!  ");
                     }
                     else {
                         yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -137,9 +156,25 @@ public class DirectChat {
                         stage.show();
                     });
                     gridPane.add(edit,0,counter);
+                    Button delete = new Button("delete");
+                    int finalI1 = i;
+                    delete.setOnMouseClicked(mouseEvent -> {
+                        Database.directs.get(u).messages.get(finalI1).isDeleted = true;
+                        Database.directs.get(u).messages.get(finalI1).isEdited = false;
+                        try {
+                            initialize();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    GridPane.setHalignment(delete,HPos.CENTER);
+                    gridPane.add(delete,0,counter);
                     Label myMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else if (Database.directs.get(u).messages.get(i).isDeleted){
+                        myMessage.setText("was deleted!  ");
                     }
                     else {
                         myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -153,6 +188,9 @@ public class DirectChat {
                     Label yourMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else if (Database.directs.get(u).messages.get(i).isDeleted){
+                        yourMessage.setText("  was deleted!  ");
                     }
                     else {
                         yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
