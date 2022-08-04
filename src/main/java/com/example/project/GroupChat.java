@@ -272,9 +272,25 @@ public class GroupChat {
                         stage.show();
                     });
                     gridPane.add(edit,0,counter);
+                    Button delete = new Button("delete");
+                    int finalI1 = i;
+                    delete.setOnMouseClicked(mouseEvent -> {
+                        Database.groups.get(u).messages.get(finalI1).isDeleted = true;
+                        Database.groups.get(u).messages.get(finalI1).isEdited = false;
+                        try {
+                            initialize();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    GridPane.setHalignment(delete,HPos.CENTER);
+                    gridPane.add(delete,0,counter);
                     Label myMessage = new Label();
                     if (Database.groups.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else if (Database.groups.get(u).messages.get(i).isDeleted){
+                        myMessage.setText("was deleted!  ");
                     }
                     else {
                         myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
@@ -288,6 +304,9 @@ public class GroupChat {
                     Label yourMessage = new Label();
                     if (Database.groups.get(u).messages.get(i).isEdited){
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
+                    }
+                    else if (Database.groups.get(u).messages.get(i).isDeleted){
+                        yourMessage.setText("was deleted!  ");
                     }
                     else {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
@@ -305,6 +324,9 @@ public class GroupChat {
                     Label myMessage = new Label();
                     if (Database.groups.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                    }
+                    else if (Database.groups.get(u).messages.get(i).isDeleted){
+                        myMessage.setText("was deleted!  ");
                     }
                     else {
                         myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
@@ -331,6 +353,19 @@ public class GroupChat {
                         stage.setScene(scene);
                         stage.show();
                     });
+                    Button delete = new Button("delete");
+                    int finalI1 = i;
+                    delete.setOnMouseClicked(mouseEvent -> {
+                        Database.groups.get(u).messages.get(finalI1).isDeleted = true;
+                        Database.groups.get(u).messages.get(finalI1).isEdited = false;
+                        try {
+                            initialize();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    GridPane.setHalignment(delete,HPos.CENTER);
+                    gridPane.add(delete,0,counter);
                     gridPane.add(edit,0,counter);
                     counter--;
                 }
@@ -338,6 +373,9 @@ public class GroupChat {
                     Label yourMessage = new Label();
                     if (Database.groups.get(u).messages.get(i).isEdited){
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
+                    }
+                    else if (Database.groups.get(u).messages.get(i).isDeleted){
+                        yourMessage.setText("was deleted!  ");
                     }
                     else {
                         yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);

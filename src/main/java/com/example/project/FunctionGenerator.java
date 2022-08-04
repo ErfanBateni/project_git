@@ -299,7 +299,7 @@ public class FunctionGenerator {
                 System.out.println("You can not edit the message you did not send.");
             }
         }
-    */}//done
+    */} //done
 
     public static void deleteMessage (User a, Message deleted) {/*
         if (deleted instanceof DirectMessage) {
@@ -355,7 +355,7 @@ public class FunctionGenerator {
                 System.out.println("You are not either an admin or the sender of this message.");
             }
         }
-    */}
+    */} //done
 
 
 
