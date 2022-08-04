@@ -43,7 +43,7 @@ public class Second_menu {
         Label followersNum = new Label(String.valueOf(Database.users.get(v).followers.size()));
         followersNum.setTextFill(Color.CADETBLUE);
         followersNum.setFont(Font.font(30));
-        followersNum.relocate(215,40);
+        followersNum.relocate(230,40);
         Label followingsNum = new Label(String.valueOf(Database.users.get(v).followings.size()));
         followingsNum.setTextFill(Color.CADETBLUE);
         followingsNum.setFont(Font.font(30));
@@ -51,6 +51,34 @@ public class Second_menu {
         pane.getChildren().add(username);
         pane.getChildren().add(followersNum);
         pane.getChildren().add(followingsNum);
+    }
+
+    @FXML
+    Button numberOfFollowings;
+    public void numberOfFollowings(){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("followingsList.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    Button numberOfFollowers;
+    public void numberOfFollowers(){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("followersList.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

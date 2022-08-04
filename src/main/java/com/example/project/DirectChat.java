@@ -122,6 +122,29 @@ public class DirectChat {
                         gridPane.add(reply,0,counter);
                     }
 
+                    if (!Database.directs.get(u).messages.get(i).isDeleted){
+                        Button forward = new Button("forward");
+                        forward.setOnMouseClicked(mouseEvent -> {
+                            File file = new File("D:\\forwardDirectMessage");
+                            try {
+                                writeFile(file,Database.directs.get(u).messages.get(finalI).textMessage,false);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("forwardDirectMessage.fxml"));
+                            Scene scene = null;
+                            try {
+                                scene = new Scene(fxmlLoader.load(), 600, 400);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            stage.setScene(scene);
+                            stage.show();
+                        });
+                        GridPane.setHalignment(forward,HPos.LEFT);
+                        gridPane.add(forward,1,counter);
+                    }
+
                     Label myMessage = new Label();
                     if (Database.directs.get(u).messages.get(i).isEdited){
                         myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
@@ -226,6 +249,29 @@ public class DirectChat {
                         });
                         GridPane.setHalignment(reply, HPos.RIGHT);
                         gridPane.add(reply, 0, counter);
+                    }
+
+                    if (!Database.directs.get(u).messages.get(i).isDeleted){
+                        Button forward = new Button("forward");
+                        forward.setOnMouseClicked(mouseEvent -> {
+                            File file = new File("D:\\forwardDirectMessage");
+                            try {
+                                writeFile(file,Database.directs.get(u).messages.get(finalI).textMessage,false);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("forwardDirectMessage.fxml"));
+                            Scene scene = null;
+                            try {
+                                scene = new Scene(fxmlLoader.load(), 600, 400);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            stage.setScene(scene);
+                            stage.show();
+                        });
+                        GridPane.setHalignment(forward,HPos.LEFT);
+                        gridPane.add(forward,1,counter);
                     }
 
                     Label myMessage = new Label();

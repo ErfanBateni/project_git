@@ -936,7 +936,7 @@ public class FunctionGenerator {
             }
             ForwardedDirect newForwardedDirect = new ForwardedDirect(sender, repliedText, receiver, forwarded);
         }
-    */}
+    */} //done
 
 
 
@@ -1082,6 +1082,6 @@ public class FunctionGenerator {
 
             ForwardedGroup newForwardedGroup = new ForwardedGroup (sender, repliedText, receiver, forwarded);
         }
-    */}
+    */} //done
 }
 

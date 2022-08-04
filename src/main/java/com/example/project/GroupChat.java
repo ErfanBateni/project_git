@@ -6,6 +6,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -41,6 +42,8 @@ public class GroupChat {
 
     @FXML
     TextField message;
+    @FXML
+    Label groupNameLabel;
 
     @FXML
     Button addMember;
@@ -223,6 +226,9 @@ public class GroupChat {
     }
 
     public void initialize() throws FileNotFoundException {
+        groupNameLabel.setText(readFile(new File("D:\\groupName")));
+        groupNameLabel.setFont(Font.font(40));
+        groupNameLabel.setTextFill(Color.DARKBLUE);
         v=0;u=0;
         for (int i=0;i<Database.users.size();i++){
             if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
@@ -240,13 +246,6 @@ public class GroupChat {
         rectangle.setFill(Color.LIGHTBLUE);
         gridPane.add(rectangle,0,0);
         counter=6;
-        String groupName = readFile(new File("D:\\groupName"));
-        Label namegroup = new Label();
-        namegroup.setText(groupName);
-        namegroup.setTextFill(Color.DARKBLUE);
-        namegroup.setFont(Font.font(40));
-        GridPane.setHalignment(namegroup,HPos.CENTER);
-        gridPane.add(namegroup,1,0);
         if (Database.groups.get(u).messages.size()>7){
             for (int i=Database.groups.get(u).messages.size()-1; i>=Database.groups.get(u).messages.size()-7; i--){
                 if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
@@ -303,6 +302,29 @@ public class GroupChat {
                         });
                         GridPane.setHalignment(reply, HPos.RIGHT);
                         gridPane.add(reply, 0, counter);
+                    }
+
+                    if (!Database.groups.get(u).messages.get(i).isDeleted) {
+                        Button forward = new Button("forward");
+                        forward.setOnMouseClicked(mouseEvent -> {
+                            File file = new File("D:\\forwardGroupMessage");
+                            try {
+                                writeFile(file,Database.groups.get(u).messages.get(finalI).textMessage,false);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("forwardGroupMessage.fxml"));
+                            Scene scene = null;
+                            try {
+                                scene = new Scene(fxmlLoader.load(), 600, 400);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            stage.setScene(scene);
+                            stage.show();
+                        });
+                        GridPane.setHalignment(forward, HPos.CENTER);
+                        gridPane.add(forward,1,counter);
                     }
 
                     Label myMessage = new Label();
@@ -425,6 +447,30 @@ public class GroupChat {
                         GridPane.setHalignment(reply, HPos.RIGHT);
                         gridPane.add(reply, 0, counter);
                     }
+
+                    if (!Database.groups.get(u).messages.get(i).isDeleted) {
+                        Button forward = new Button("forward");
+                        forward.setOnMouseClicked(mouseEvent -> {
+                            File file = new File("D:\\forwardGroupMessage");
+                            try {
+                                writeFile(file,Database.groups.get(u).messages.get(finalI).textMessage,false);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("forwardGroupMessage.fxml"));
+                            Scene scene = null;
+                            try {
+                                scene = new Scene(fxmlLoader.load(), 600, 400);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            stage.setScene(scene);
+                            stage.show();
+                        });
+                        GridPane.setHalignment(forward, HPos.CENTER);
+                        gridPane.add(forward,1,counter);
+                    }
+
                     counter--;
                 }
                 else if (counter>=0){
