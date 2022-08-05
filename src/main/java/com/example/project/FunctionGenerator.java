@@ -593,7 +593,7 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    */}
+    */} //done
 
     public static void displayRepliesPost (Post a) {/*
         if (!a.isDeleted) {

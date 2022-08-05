@@ -211,20 +211,6 @@ public class GroupChat {
         initialize();
     }
 
-    @FXML
-    Button back;
-    public void back(){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("groups.fxml"));
-        Scene scene = null;
-        try {
-            scene = new Scene(fxmlLoader.load(), 600, 400);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public void initialize() throws FileNotFoundException {
         groupNameLabel.setText(readFile(new File("D:\\groupName")));
         groupNameLabel.setFont(Font.font(40));
@@ -372,7 +358,6 @@ public class GroupChat {
                     }
                     counter--;
                 }
-
             }
         }
         else {
@@ -504,5 +489,19 @@ public class GroupChat {
                 }
             }
         }
+    }
+
+    @FXML
+    Button back;
+    public void back(){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("groups.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load(), 600, 400);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(scene);
+        stage.show();
     }
 }

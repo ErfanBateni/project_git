@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,6 +32,12 @@ public class Search {
     @FXML
     TextField search_message;
 
+    public void initialize(){
+        Rectangle rectangle = new Rectangle(0,0,1600,1400);
+        rectangle.setFill(Color.LIGHTBLUE);
+        gridPane.add(rectangle,0,0);
+    }
+
     @FXML
     Button back;
     public void back(){
@@ -48,19 +56,24 @@ public class Search {
     @FXML
     Button search;
     public void search() throws FileNotFoundException {
-        int v = 0,counter=4;
+        int v = 0,counter=0;
         boolean search = false;
         for (int i = 0; i < Database.users.size(); i++) {
             if (Controller.currentUser.equals(readFile(new File("D:\\usernameLogin")))) {
                 v = i;
             }
         }
+        gridPane.getChildren().clear();
+        Rectangle rectangle = new Rectangle(0,0,1600,1400);
+        rectangle.setFill(Color.LIGHTBLUE);
+        gridPane.add(rectangle,0,0);
         for (int i = 0; i < Database.users.get(v).directs.size(); i++){
             for (int j = 0; j < Database.users.get(v).directs.get(i).messages.size(); j++) {
                 if (Database.users.get(v).directs.get(i).messages.get(j).textMessage.contains(search_message.getText())){
                     Label search_answer = new Label();
                     search_answer.setText("  In the direct:  " + Database.users.get(v).directs.get(i).messages.get(j).textMessage);
                     search_answer.setTextFill(Color.DARKBLUE);
+                    search_answer.setFont(Font.font(20));
                     gridPane.add(search_answer,0,counter);
                     counter++;
                     search = true;
@@ -71,8 +84,9 @@ public class Search {
             for (int j = 0; j < Database.users.get(v).groups.get(i).messages.size(); j++) {
                 if(Database.users.get(v).groups.get(i).messages.get(j).textMessage.contains(search_message.getText())){
                     Label search_answer = new Label();
-                    search_answer.setText("  In the group:  " + Database.users.get(v).groups.get(i).messages.get(j).textMessage);
+                    search_answer.setText("  In the group "+Database.users.get(v).groups.get(i).groupName+" : "+Database.users.get(v).groups.get(i).messages.get(j).textMessage);
                     search_answer.setTextFill(Color.DARKBLUE);
+                    search_answer.setFont(Font.font(20));
                     gridPane.add(search_answer,0,counter);
                     counter++;
                     search = true;
@@ -81,9 +95,12 @@ public class Search {
         }
         if (!search){
             Label search_answer = new Label();
-            search_answer.setText("No messages could be found in your directs and groups.");
+            search_answer.setText(" No messages could be found in your directs and groups.");
             search_answer.setTextFill(Color.DARKBLUE);
+            search_answer.setFont(Font.font(20));
             gridPane.add(search_answer,0,counter);
         }
+        else search_message.setText("");
     }
+
 }

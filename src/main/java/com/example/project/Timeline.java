@@ -14,7 +14,7 @@ public class Timeline {
     @FXML
     Button create_post;
     public void create_post(){
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("others_post.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("newPost.fxml"));
         Scene scene = null;
         try {
             scene = new Scene(fxmlLoader.load(), 600, 400);
