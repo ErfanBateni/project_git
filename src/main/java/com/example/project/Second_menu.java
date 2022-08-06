@@ -61,11 +61,14 @@ public class Second_menu {
         pane.getChildren().add(followersNum);
         pane.getChildren().add(followingsNum);
 
-        for (int i = Database.posts.size()-1; i>=0; i--) {
+        for (int i = Database.users.get(v).posts.size()-1; i>=0; i--) {
             if (Database.posts.get(i).sender.userName.equals(Database.users.get(v).userName)){
                 Button showPost = new Button("  Show post");
                 int finalI = i;
                 showPost.setOnMouseClicked(mouseEvent -> {
+                    if (!Database.posts.get(finalI).seen.contains(Database.users.get(v))){
+                        Database.posts.get(finalI).seen.add(Database.users.get(v));
+                    }
                     File file = new File("D:\\postTextMessage");
                     try {
                         writeFile(file,Database.posts.get(finalI).textMessage,false);
@@ -85,13 +88,13 @@ public class Second_menu {
                 showPost.setTextFill(Color.DARKBLUE);
                 gridPane.add(showPost,0,counter);
                 Label postText = new Label();
-                if (Database.posts.get(i).textMessage.length()>10){
-                    postText.setText(Database.posts.get(i).textMessage.substring(0,9)+" ...");
-                    postText.setFont(Font.font(20));
+                if (Database.posts.get(i).textMessage.length()>17){
+                    postText.setText(Database.posts.get(i).textMessage.substring(0,17)+" ...");
+                    postText.setFont(Font.font(14));
                 }
                 else {
                     postText.setText(Database.posts.get(i).textMessage);
-                    postText.setFont(Font.font(20));
+                    postText.setFont(Font.font(17));
                 }
                 postText.setTextFill(Color.LIGHTBLUE);
                 GridPane.setHalignment(postText, HPos.RIGHT);

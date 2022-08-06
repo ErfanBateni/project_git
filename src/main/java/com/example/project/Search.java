@@ -93,6 +93,19 @@ public class Search {
                 }
             }
         }
+        for (int i = 0; i < Database.posts.size(); i++) {
+            for (int j = 0; j < Database.posts.get(i).replies.size(); j++) {
+                    if(Database.posts.get(i).replies.get(j).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                        Label search_answer = new Label();
+                        search_answer.setText("  In the post "+Database.posts.get(i).textMessage.split("\\s")[0]+" : "+Database.users.get(v).groups.get(i).messages.get(j).textMessage);
+                        search_answer.setTextFill(Color.DARKBLUE);
+                        search_answer.setFont(Font.font(20));
+                        gridPane.add(search_answer,0,counter);
+                        counter++;
+                        search = true;
+                    }
+            }
+        }
         if (!search){
             Label search_answer = new Label();
             search_answer.setText(" No messages could be found in your directs and groups.");

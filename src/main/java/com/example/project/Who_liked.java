@@ -27,24 +27,25 @@ public class Who_liked {
         }
         return text.toString();
     }
-    int counter;
+    int counter,u;
 
     public void initialize() throws FileNotFoundException {
-        for (Post post : Database.posts){
-            if (post.sender.userName.equals(readFile(new File("D:\\usernameLogin"))) && post.textMessage.equals(readFile(new File("D:\\postTextMessage"))))
-                counter=0;
-                for (User user : post.liked){
-                    if (!user.userName.equals(readFile(new File("D:\\usernameLogin")))){
-                        Label usernameWhoLiked = new Label(user.userName);
-                        usernameWhoLiked.setFont(Font.font(20));
-                        usernameWhoLiked.setTextFill(Color.DARKBLUE);
-                        GridPane.setHalignment(usernameWhoLiked, HPos.CENTER);
-                        gridPane.add(usernameWhoLiked,1,counter);
-                        counter++;
-                    }
+        u=0;
+        for (int i=0;i<Database.posts.size();i++){
+            if (Database.posts.get(i).textMessage.equals(readFile(new File("D:\\postTextMessage")))){
+                u=i;
+                break;
             }
         }
-
+        counter=1;
+        for (User user : Database.posts.get(u).liked){
+            Label usernameWhoLiked = new Label(user.userName);
+            usernameWhoLiked.setFont(Font.font(20));
+            usernameWhoLiked.setTextFill(Color.DARKBLUE);
+            GridPane.setHalignment(usernameWhoLiked, HPos.CENTER);
+            gridPane.add(usernameWhoLiked,0,counter);
+            counter++;
+            }
     }
 
     @FXML

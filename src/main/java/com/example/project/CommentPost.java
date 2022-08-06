@@ -2,18 +2,15 @@ package com.example.project;
 
 import java.util.ArrayList;
 
-public class CommentPost extends Post {
-    Post repliedMessage;
-    public CommentPost (User sender, String text, Post replied) {
-        super(sender, text);
+public class CommentPost extends Message {
+    Post receiverPost;
+    public CommentPost (User sender, String text, Post post) {
         this.sender = sender;
         this.textMessage = text;
+        this.receiverPost = post;
         this.messageNum = HelloApplication.messageNum;
-        this.repliedMessage = replied;
         HelloApplication.messageNum = HelloApplication.messageNum + 1;
-        this.isDeleted = false;
-        this.isEdited = false;
-        replied.replies.add(this);
+        post.replies.add(this);
         Database.commentPosts.add(this);
         Database.messages.add(this);
     }

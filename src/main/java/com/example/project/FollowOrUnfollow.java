@@ -42,6 +42,10 @@ public class FollowOrUnfollow {
                         unfollow.setOnMouseClicked(mouseEvent -> {
                             user.followings.remove(user1);
                             user1.followers.remove(user);
+                            Label done = new Label("done  ");
+                            done.setTextFill(Color.LIGHTGREEN);
+                            GridPane.setHalignment(done,HPos.RIGHT);
+                            gridPane.add(done,1,counter-1);
                         });
                         gridPane.add(unfollow,0,counter);
                         counter++;
@@ -64,6 +68,10 @@ public class FollowOrUnfollow {
                             if (!user.followings.contains(user1) && !user1.followers.contains(user)){
                                 user.followings.add(user1);
                                 user1.followers.add(user);
+                                Label done = new Label("done  ");
+                                done.setTextFill(Color.LIGHTGREEN);
+                                GridPane.setHalignment(done,HPos.RIGHT);
+                                gridPane.add(done,1,counter-1);
                             }
                         });
                         gridPane.add(unfollow,0,counter);

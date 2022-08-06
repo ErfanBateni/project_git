@@ -231,7 +231,7 @@ public class FunctionGenerator {
                 System.out.println("You liked this message.");
             }
         }
-    }
+    } //done
 
     public static void dislike (User a, Message b) {
         if (b.disliked.contains(a)) {
@@ -249,7 +249,7 @@ public class FunctionGenerator {
                 System.out.println("You disliked this message.");
             }
         }
-    }
+    } //done
 
 
 
@@ -560,7 +560,7 @@ public class FunctionGenerator {
         if (!search) {
             System.out.println("\n No messages could be found in your directs and groups.");
         }
-    } //done without check
+    } //done
 
 
 
@@ -617,7 +617,7 @@ public class FunctionGenerator {
         else {
             System.out.println("This message was deleted.");
         }
-    */}
+    */} //done
 
     public static void replyPost (User sender, ArrayList<String> text, Post replied) {/*
         if (!replied.isDeleted) {
@@ -639,7 +639,7 @@ public class FunctionGenerator {
             CommentPost newCommentPost = new CommentPost(sender, repliedText, replied);
             System.out.println("Your reply has been uploaded successfully.");
         }
-    */}
+    */} //done
 
 
 

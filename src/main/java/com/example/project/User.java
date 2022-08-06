@@ -13,6 +13,7 @@ public class User {
     ArrayList<User> blocked = new ArrayList<>();
     ArrayList<Direct> directs = new ArrayList<>();
     ArrayList<Group> groups = new ArrayList<>();
+    ArrayList<Post> posts = new ArrayList<>();
 
     public User (String name, String password, boolean type, String security) {
         this.userName = name;

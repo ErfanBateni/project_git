@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Post extends Message {
     ArrayList<CommentPost> replies = new ArrayList<>();
+    ArrayList<User> seen = new ArrayList<>();
     public Post (User sender, String text) {
         this.sender = sender;
         this.textMessage = text;
@@ -11,6 +12,7 @@ public class Post extends Message {
         HelloApplication.messageNum = HelloApplication.messageNum + 1;
         this.isDeleted = false;
         this.isEdited = false;
+        sender.posts.add(this);
         Database.posts.add(this);
         Database.messages.add(this);
     }
