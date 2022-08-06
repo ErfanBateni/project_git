@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -44,6 +46,8 @@ public class GroupChat {
     TextField message;
     @FXML
     Label groupNameLabel;
+    @FXML
+    ImageView imageView;
 
     @FXML
     Button addMember;
@@ -226,6 +230,10 @@ public class GroupChat {
             if (Database.groups.get(i).groupName.equals(readFile(new File("D:\\groupName")))){
                 u=i;
             }
+        }
+        if (!Database.groups.get(u).picture.equals(".png")){
+            Image groupImage = new Image(Database.users.get(v).picture);
+            imageView.setImage(groupImage);
         }
         gridPane.getChildren().clear();
         Rectangle rectangle = new Rectangle(0,0,1600,1400);

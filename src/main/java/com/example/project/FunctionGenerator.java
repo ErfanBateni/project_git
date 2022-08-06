@@ -949,14 +949,14 @@ public class FunctionGenerator {
             }
         }
         if (!groupExists) {
-            Group newGroup = new Group(name, creator);
+            Group newGroup = new Group(name, creator,name);
             System.out.println("Group was created successfully.");
         }
         else {
             System.out.println("This group already exists, Please choose another name for your group.");
             Scanner scan = new Scanner(System.in);
             String nam = scan.nextLine();
-            Group newGroup = new Group(nam, creator);
+            Group newGroup = new Group(nam, creator,nam);
         }
     } //done
 

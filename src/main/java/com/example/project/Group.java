@@ -7,9 +7,11 @@ public class Group {
     ArrayList<GroupMessage> messages = new ArrayList<>();
     ArrayList<User> members = new ArrayList<>();
     User admin;
+    String picture;
 
-    public Group (String name, User creator) {
+    public Group (String name, User creator, String picture) {
         this.groupName = name;
+        this.picture = picture;
         this.admin = creator;
         this.members.add(creator);
         creator.groups.add(this);

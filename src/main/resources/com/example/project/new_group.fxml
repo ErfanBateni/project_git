@@ -66,10 +66,16 @@
          </font>
       </Label>
       <TextField fx:id="groupName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-      <Button fx:id="create" mnemonicParsing="false" onAction="#create" prefHeight="50.0" prefWidth="87.0" text="create" textFill="#0e1eb2" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+      <Button fx:id="create" mnemonicParsing="false" onAction="#create" prefHeight="50.0" prefWidth="87.0" text="create" textFill="#0e1eb2" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="95.0" layoutY="42.0" text="group's picture :" textFill="#1333bf" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="picture" layoutX="310.0" layoutY="45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="23.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    </children>
 </GridPane>
