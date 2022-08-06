@@ -55,9 +55,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <HBox fx:id="hBox1" alignment="CENTER" layoutX="25.0" layoutY="70.0" prefHeight="70.0" prefWidth="550.0" />
-      <HBox fx:id="hBox2" alignment="CENTER" layoutX="25.0" layoutY="140.0" prefHeight="70.0" prefWidth="550.0" />
-      <HBox fx:id="hBox3" alignment="CENTER" layoutX="25.0" layoutY="210.0" prefHeight="70.0" prefWidth="550.0" />
+      <HBox fx:id="hBox1" alignment="CENTER" layoutX="25.0" layoutY="230.0" prefHeight="35.0" prefWidth="550.0" />
+      <HBox fx:id="hBox2" alignment="CENTER" layoutX="25.0" layoutY="265.0" prefHeight="35.0" prefWidth="550.0" />
       <Line endX="585.0" endY="50.0" startX="15.0" startY="50.0" stroke="#5e5019" />
       <Line endX="585.0" endY="300.0" startX="15.0" startY="300.0" stroke="#5e5019" />
       <Line endX="15.0" endY="300.0" startX="15.0" startY="50.0" stroke="#5e5019" />

@@ -129,7 +129,7 @@ public class Controller {
             //String[] f = s.split(" ");
             //ArrayList<String> text = new ArrayList<>();
             //text.addAll(Arrays.asList(f));
-            FunctionGenerator.sendPost(Database.users.get(v), text);
+            FunctionGenerator.sendPost(Database.users.get(v), text, text);
             Controller.timeline();
         }
 

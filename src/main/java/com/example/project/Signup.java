@@ -24,6 +24,8 @@ public class Signup {
     TextField password;
     @FXML
     TextField security_question;
+    @FXML
+    TextField picture;
 
     @FXML
     Button ordinary;
@@ -39,6 +41,7 @@ public class Signup {
     @FXML
     Button done;
     public void done(){
+        picture.setText(picture.getText()+".png");
         boolean userExists = false;
         Label warning1 = new Label();
         Label warning2 = new Label();
@@ -62,7 +65,7 @@ public class Signup {
                 anchorPane.getChildren().add(warning2);
             }
             else {
-                User newUser = new User(username.getText(),password.getText(), type,security_question.getText());
+                User newUser = new User(username.getText(),password.getText(), type,security_question.getText(),picture.getText());
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("first_menu.fxml"));
                 Scene scene = null;
                 try {

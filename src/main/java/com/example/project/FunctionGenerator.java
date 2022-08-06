@@ -27,7 +27,7 @@ public class FunctionGenerator {
                 signUp(name, pas, type, security);
             }
             else {
-                User newUser = new User(name, pass, type, security);
+                User newUser = new User(name, pass, type, security,name);
                 System.out.println("You have signed up successfully. \n");
             }
         }
@@ -577,8 +577,8 @@ public class FunctionGenerator {
         }
     */} //done
 
-    public static void sendPost (User sender, String text) {
-        Post newPost = new Post(sender, text);
+    public static void sendPost (User sender, String text, String picture) {
+        Post newPost = new Post(sender, text, picture);
         System.out.println("Your post has been uploaded successfully.");
     }
 

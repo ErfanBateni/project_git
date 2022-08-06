@@ -24,10 +24,13 @@ public class NewPost {
 
     @FXML
     TextField postText;
+    @FXML
+    TextField postPicture;
 
     @FXML
     Button post;
     public void post() throws FileNotFoundException {
+        postPicture.setText(postPicture.getText()+".png");
         int v=0;
         for (int i=0;i<Database.users.size();i++){
             if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
@@ -36,10 +39,10 @@ public class NewPost {
             }
         }
         if (Database.users.get(v).userType){
-            Post newPost = new Post(Database.users.get(v),"ad - "+postText.getText());
+            Post newPost = new Post(Database.users.get(v),"ad - "+postText.getText(),postPicture.getText());
         }
         else {
-            Post newPost = new Post(Database.users.get(v),postText.getText());
+            Post newPost = new Post(Database.users.get(v),postText.getText(),postPicture.getText());
         }
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("timeline.fxml"));
         Scene scene = null;

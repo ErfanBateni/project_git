@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Message {
     User sender;
     String textMessage;
+    String textPicture;
     int messageNum;
     boolean isDeleted;
     boolean isEdited;

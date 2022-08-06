@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class CommentPost extends Message {
     Post receiverPost;
+    boolean like = false;
+    int likeNumber=0;
     public CommentPost (User sender, String text, Post post) {
         this.sender = sender;
         this.textMessage = text;

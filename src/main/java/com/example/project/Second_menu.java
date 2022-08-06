@@ -6,6 +6,8 @@ import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -45,14 +47,17 @@ public class Second_menu {
                 break;
             }
         }
+
         Label username = new Label(Database.users.get(v).userName);
         username.setTextFill(Color.CADETBLUE);
         username.setFont(Font.font(30));
         username.relocate(55,3);
+
         Label followersNum = new Label(String.valueOf(Database.users.get(v).followers.size()));
         followersNum.setTextFill(Color.CADETBLUE);
         followersNum.setFont(Font.font(30));
         followersNum.relocate(230,40);
+
         Label followingsNum = new Label(String.valueOf(Database.users.get(v).followings.size()));
         followingsNum.setTextFill(Color.CADETBLUE);
         followingsNum.setFont(Font.font(30));
@@ -60,6 +65,16 @@ public class Second_menu {
         pane.getChildren().add(username);
         pane.getChildren().add(followersNum);
         pane.getChildren().add(followingsNum);
+
+        if (!Database.users.get(v).picture.equals(".png")){
+            Image profileImage = new Image(Database.users.get(v).picture);
+            ImageView profileImage_view = new ImageView(profileImage);
+            profileImage_view.setX(295);
+            profileImage_view.setY(25);
+            profileImage_view.setFitHeight(100);
+            profileImage_view.setFitWidth(160);
+            pane.getChildren().add(profileImage_view);
+        }
 
         for (int i = Database.users.get(v).posts.size()-1; i>=0; i--) {
             if (Database.posts.get(i).sender.userName.equals(Database.users.get(v).userName)){

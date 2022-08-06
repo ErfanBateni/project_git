@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -33,8 +35,6 @@ public class Posts {
     HBox hBox1;
     @FXML
     HBox hBox2;
-    @FXML
-    HBox hBox3;
 
     public void initialize() throws FileNotFoundException {
         int v=0,u=0;
@@ -63,12 +63,21 @@ public class Posts {
                 dislike.setTextFill(Color.RED);
         }
 
-
         Label username = new Label(Database.posts.get(u).sender.userName);
         username.setTextFill(Color.DARKBLUE);
         username.setFont(Font.font(30));
         username.relocate(50,10);
         pane.getChildren().add(username);
+
+        if (!Database.posts.get(u).textPicture.equals(".png")){
+            Image postImage = new Image(Database.posts.get(u).textPicture);
+            ImageView postImage_view = new ImageView(postImage);
+            postImage_view.setX(204);
+            postImage_view.setY(80);
+            postImage_view.setFitHeight(120);
+            postImage_view.setFitWidth(192);
+            pane.getChildren().add(postImage_view);
+        }
 
         Label postText = new Label();
         if (readFile(new File("D:\\postTextMessage")).length()<35){
@@ -114,57 +123,6 @@ public class Posts {
                 two.setFont(Font.font(27));
                 hBox1.getChildren().add(one);
                 hBox2.getChildren().add(two);
-            }
-        }
-        else {
-            if (readFile(new File("D:\\postTextMessage")).charAt(33)!=' ' && readFile(new File("D:\\postTextMessage")).charAt(34)!=' '){
-                counter=0;
-                for (int i = 32; i >=0; i--) {
-                    if (readFile(new File("D:\\postTextMessage")).charAt(i)==' '){
-                        Label one = new Label(readFile(new File("D:\\postTextMessage")).substring(0,i));
-                        Label two = new Label(readFile(new File("D:\\postTextMessage")).substring(i+1));
-                        Label three = new Label(readFile(new File("D:\\postTextMessage")).substring(60));
-                        one.setTextFill(Color.DARKBLUE);
-                        one.setFont(Font.font(27));
-                        two.setTextFill(Color.DARKBLUE);
-                        two.setFont(Font.font(27));
-                        three.setTextFill(Color.DARKBLUE);
-                        three.setFont(Font.font(27));
-                        hBox1.getChildren().add(one);
-                        hBox2.getChildren().add(two);
-                        hBox3.getChildren().add(three);
-                        break;
-                    }
-                    counter++;
-                }
-                if (counter==33) {
-                    Label one = new Label(readFile(new File("D:\\postTextMessage")).substring(0,35));
-                    Label two = new Label(readFile(new File("D:\\postTextMessage")).substring(35,60));
-                    Label three = new Label(readFile(new File("D:\\postTextMessage")).substring(60));
-                    one.setTextFill(Color.DARKBLUE);
-                    one.setFont(Font.font(27));
-                    two.setTextFill(Color.DARKBLUE);
-                    two.setFont(Font.font(27));
-                    three.setTextFill(Color.DARKBLUE);
-                    three.setFont(Font.font(27));
-                    hBox1.getChildren().add(one);
-                    hBox2.getChildren().add(two);
-                    hBox3.getChildren().add(three);
-                }
-            }
-            else {
-                Label one = new Label(readFile(new File("D:\\postTextMessage")).substring(0,35));
-                Label two = new Label(readFile(new File("D:\\postTextMessage")).substring(35,60));
-                Label three = new Label(readFile(new File("D:\\postTextMessage")).substring(60));
-                one.setTextFill(Color.DARKBLUE);
-                one.setFont(Font.font(27));
-                two.setTextFill(Color.DARKBLUE);
-                two.setFont(Font.font(27));
-                three.setTextFill(Color.DARKBLUE);
-                three.setFont(Font.font(27));
-                hBox1.getChildren().add(one);
-                hBox2.getChildren().add(two);
-                hBox3.getChildren().add(three);
             }
         }
     }

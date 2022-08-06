@@ -40,7 +40,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="postText" layoutX="233.0" layoutY="132.0" prefHeight="26.0" prefWidth="221.0" AnchorPane.leftAnchor="233.00000000000003" AnchorPane.rightAnchor="145.4" />
+      <TextField fx:id="postText" layoutX="233.0" layoutY="132.0" prefHeight="26.0" prefWidth="230.0" AnchorPane.leftAnchor="233.00000000000003" AnchorPane.rightAnchor="145.4" />
       <Label layoutX="122.0" layoutY="128.0" prefHeight="34.0" prefWidth="86.0" text="add text" textFill="#0900ff">
          <font>
             <Font size="23.0" />
@@ -51,5 +51,11 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Label layoutX="80.0" layoutY="79.0" text="add picturee" textFill="#0900ff">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="postPicture" layoutX="233.0" layoutY="83.0" prefHeight="26.0" prefWidth="222.0" />
    </children>
 </AnchorPane>

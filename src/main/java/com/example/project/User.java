@@ -8,6 +8,7 @@ public class User {
     boolean userType;  // 0 for ordinary account, 1 for business account
     int credit;
     String securityAnswer;
+    String picture;
     ArrayList<User> followers = new ArrayList<>();
     ArrayList<User> followings = new ArrayList<>();
     ArrayList<User> blocked = new ArrayList<>();
@@ -15,9 +16,10 @@ public class User {
     ArrayList<Group> groups = new ArrayList<>();
     ArrayList<Post> posts = new ArrayList<>();
 
-    public User (String name, String password, boolean type, String security) {
+    public User (String name, String password, boolean type, String security, String picture) {
         this.userName = name;
         this.password = password;
+        this.picture = picture;
         this.userType = type;
         this.credit = 0;
         this.securityAnswer = security;

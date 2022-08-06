@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Post extends Message {
     ArrayList<CommentPost> replies = new ArrayList<>();
     ArrayList<User> seen = new ArrayList<>();
-    public Post (User sender, String text) {
+    public Post (User sender, String text, String picture) {
         this.sender = sender;
+        this.textPicture = picture;
         this.textMessage = text;
         this.messageNum = HelloApplication.messageNum;
         HelloApplication.messageNum = HelloApplication.messageNum + 1;

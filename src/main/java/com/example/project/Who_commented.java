@@ -50,7 +50,7 @@ public class Who_commented {
                 u=i;
             }
         }
-        if (postExists) {
+        if (postExists && !message.getText().equals("") && !message.getText().equals(" ") && !message.getText().equals("  ") && !message.getText().equals("   ") && !message.getText().equals("    ") && !message.getText().equals("     ") && !message.getText().equals("      ") && !message.getText().equals("       ") && !message.getText().equals("        ") && !message.getText().equals("         ") && !message.getText().equals("          ") && !message.getText().equals("           ") && !message.getText().equals("            ") && !message.getText().equals("             ") && !message.getText().equals("              ") && !message.getText().equals("               ") && !message.getText().equals("                ") && !message.getText().equals("                 ") && !message.getText().equals("                  ") && !message.getText().equals("                   ") && !message.getText().equals("                    ") && !message.getText().equals("                     ") && !message.getText().equals("                      ") && !message.getText().equals("                       ") && !message.getText().equals("                        ") && !message.getText().equals("                         ") && !message.getText().equals("                          ") && !message.getText().equals("                           ") && !message.getText().equals("                            ") && !message.getText().equals("                             ") && !message.getText().equals("                              ")) {
             CommentPost newComment = new CommentPost(Database.users.get(v), message.getText(), Database.posts.get(u));
         }
         message.setText("");
@@ -115,6 +115,21 @@ public class Who_commented {
                     }
                     gridPane.add(myMessage,1,counter);
 
+                    Button like = new Button();
+                    if (Database.posts.get(u).replies.get(final1).likeNumber>0){
+                        like.setText("like  "+Database.posts.get(u).replies.get(final1).likeNumber);
+                        like.setTextFill(Color.RED);
+                    }
+                    else {
+                        like.setText("like");
+                        like.setTextFill(Color.BLACK);
+                    }
+                    like.setOnMouseClicked(mouseEvent -> {
+                        Database.posts.get(u).replies.get(final1).likeNumber++;
+                    });
+                    GridPane.setHalignment(like,HPos.CENTER);
+                    gridPane.add(like, 0, counter);
+
                     counter--;
                 }
                 else if (counter>=0){
@@ -135,6 +150,21 @@ public class Who_commented {
                     myMessage.setText("  "+Database.posts.get(u).replies.get(i).sender.userName+" : "+Database.posts.get(u).replies.get(i).textMessage);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,0,counter);
+
+                    Button like = new Button();
+                    if (Database.posts.get(u).replies.get(final2).likeNumber>0){
+                        like.setText("like  "+Database.posts.get(u).replies.get(final2).likeNumber);
+                        like.setTextFill(Color.RED);
+                    }
+                    else {
+                        like.setText("like");
+                        like.setTextFill(Color.BLACK);
+                    }
+                    like.setOnMouseClicked(mouseEvent -> {
+                        Database.posts.get(u).replies.get(final2).likeNumber++;
+                    });
+                    GridPane.setHalignment(like,HPos.CENTER);
+                    gridPane.add(like, 1, counter);
 
                     counter--;
                 }
@@ -166,6 +196,21 @@ public class Who_commented {
                     }
                     gridPane.add(myMessage,1,counter);
 
+                    Button like = new Button();
+                    if (Database.posts.get(u).replies.get(final3).likeNumber>0){
+                        like.setText("like  "+Database.posts.get(u).replies.get(final3).likeNumber);
+                        like.setTextFill(Color.RED);
+                    }
+                    else {
+                        like.setText("like");
+                        like.setTextFill(Color.BLACK);
+                    }
+                    like.setOnMouseClicked(mouseEvent -> {
+                        Database.posts.get(u).replies.get(final3).likeNumber++;
+                    });
+                    GridPane.setHalignment(like,HPos.CENTER);
+                    gridPane.add(like, 0, counter);
+
                     counter--;
                 }
                 else if (counter>=0){
@@ -186,6 +231,21 @@ public class Who_commented {
                     myMessage.setText("  "+Database.posts.get(u).replies.get(i).sender.userName+" : "+Database.posts.get(u).replies.get(i).textMessage);
                     myMessage.setFont(Font.font(18));
                     gridPane.add(myMessage,0,counter);
+
+                    Button like = new Button();
+                    if (Database.posts.get(u).replies.get(final4).likeNumber>0){
+                        like.setText("like  "+Database.posts.get(u).replies.get(final4).likeNumber);
+                        like.setTextFill(Color.RED);
+                    }
+                    else {
+                        like.setText("like");
+                        like.setTextFill(Color.BLACK);
+                    }
+                    like.setOnMouseClicked(mouseEvent -> {
+                        Database.posts.get(u).replies.get(final4).likeNumber++;
+                    });
+                    GridPane.setHalignment(like,HPos.CENTER);
+                    gridPane.add(like, 1, counter);
 
                     counter--;
                 }
