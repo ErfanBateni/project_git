@@ -105,7 +105,7 @@
             </ImageView>
             <Label fx:id="groupNameLabel" text="">
                <VBox.margin>
-                  <Insets left="200.0" top="-190.0" />
+                  <Insets left="240.0" top="-190.0" />
                </VBox.margin>
             </Label>
          </children>

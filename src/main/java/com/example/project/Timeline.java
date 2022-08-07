@@ -62,6 +62,16 @@ public class Timeline {
                         if (!Database.posts.get(finalI).seen.contains(Database.users.get(v))){
                             Database.posts.get(finalI).seen.add(Database.users.get(v));
                         }
+                        for (int j=0;j<Database.posts.size();j++){
+                            try {
+                                if (Database.posts.get(j).textMessage.equals(readFile(new File("D:\\postTextMessage")))){
+                                    Database.posts.get(j).seenNumber++;
+                                    break;
+                                }
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         File file = new File("D:\\postTextMessage");
                         try {
                             writeFile(file,Database.posts.get(finalI).textMessage,false);
@@ -102,6 +112,16 @@ public class Timeline {
                     showPost.setTextFill(Color.DARKBLUE);
                     int finalI = i;
                     showPost.setOnMouseClicked(mouseEvent -> {
+                        for (int j=0;j<Database.posts.size();j++){
+                            try {
+                                if (Database.posts.get(j).textMessage.equals(readFile(new File("D:\\postTextMessage")))){
+                                    Database.posts.get(j).seenNumber++;
+                                    break;
+                                }
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         File file = new File("D:\\postTextMessage");
                         try {
                             writeFile(file,Database.posts.get(finalI).textMessage,false);

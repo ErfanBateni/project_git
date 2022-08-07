@@ -30,27 +30,27 @@
                 </RadialGradient>
             </fill>
         </Rectangle>
-        <Button fx:id="showLikes" layoutX="43.0" layoutY="330.0" mnemonicParsing="false" onAction="#showLikes" text="show likes" textFill="#00aaff">
+        <Button fx:id="showLikes" layoutX="35.0" layoutY="330.0" mnemonicParsing="false" onAction="#showLikes" text="show likes" textFill="#00aaff">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button fx:id="showComments" layoutX="155.0" layoutY="330.0" mnemonicParsing="false" onAction="#showComments" text="show comments" textFill="#00aaff">
+        <Button fx:id="showComments" layoutX="145.0" layoutY="330.0" mnemonicParsing="false" onAction="#showComments" text="show comments" textFill="#00aaff">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button fx:id="back" layoutX="495.0" layoutY="330.0" mnemonicParsing="false" onAction="#back" prefHeight="43.0" prefWidth="78.0" text="back" textFill="#00aaff">
+        <Button fx:id="back" layoutX="519.0" layoutY="350.0" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="69.0" text="back" textFill="#00aaff">
             <font>
                 <Font size="17.0" />
             </font>
         </Button>
-        <Button fx:id="like" layoutX="326.0" layoutY="333.0" mnemonicParsing="false" onAction="#like" prefHeight="31.0" prefWidth="43.0" text="like" textFill="RED">
+        <Button fx:id="like" layoutX="320.0" layoutY="333.0" mnemonicParsing="false" onAction="#like" prefHeight="31.0" prefWidth="43.0" text="like" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="dislike" layoutX="376.0" layoutY="333.0" mnemonicParsing="false" onAction="#dislike" prefHeight="31.0" prefWidth="60.0" text="dislike" textFill="RED">
+      <Button fx:id="dislike" layoutX="368.0" layoutY="333.0" mnemonicParsing="false" onAction="#dislike" prefHeight="31.0" prefWidth="60.0" text="dislike" textFill="RED">
          <font>
             <Font size="14.0" />
          </font>

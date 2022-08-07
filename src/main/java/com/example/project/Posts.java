@@ -79,6 +79,18 @@ public class Posts {
             pane.getChildren().add(postImage_view);
         }
 
+        if (Database.posts.get(u).sender.userType){
+            Button seenNumber = new Button("seen = "+Database.posts.get(u).seenNumber);
+            seenNumber.setOnMouseClicked(mouseEvent -> {
+
+            });
+            seenNumber.relocate(433,333);
+            seenNumber.setPrefHeight(31);
+            seenNumber.setTextFill(Color.rgb(0,170,255));
+            seenNumber.setFont(Font.font(14));
+            pane.getChildren().add(seenNumber);
+        }
+
         Label postText = new Label();
         if (readFile(new File("D:\\postTextMessage")).length()<35){
             postText.setText(readFile(new File("D:\\postTextMessage")));

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -145,19 +147,30 @@ public class DirectChat {
                         gridPane.add(forward,1,counter);
                     }
 
-                    Label myMessage = new Label();
-                    if (Database.directs.get(u).messages.get(i).isEdited){
-                        myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("Deleted message  ");
+                    if (Database.directs.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.directs.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(65);
+                        GridPane.setHalignment(messageImage_view,HPos.CENTER);
+                        gridPane.add(messageImage_view,1,counter);
                     }
                     else {
-                        myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        Label myMessage = new Label();
+                        if (Database.directs.get(u).messages.get(i).isEdited){
+                            myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        else if (Database.directs.get(u).messages.get(i).isDeleted){
+                            myMessage.setText("Deleted message  ");
+                        }
+                        else {
+                            myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        GridPane.setHalignment(myMessage, HPos.RIGHT);
+                        myMessage.setFont(Font.font(18));
+                        gridPane.add(myMessage,1,counter);
                     }
-                    GridPane.setHalignment(myMessage, HPos.RIGHT);
-                    myMessage.setFont(Font.font(18));
-                    gridPane.add(myMessage,1,counter);
+
                     counter--;
                 }
                 else if (counter>=0){
@@ -176,18 +189,27 @@ public class DirectChat {
                         gridPane.add(reply, 1, counter);
                     }
 
-                    Label yourMessage = new Label();
-                    if (Database.directs.get(u).messages.get(i).isEdited){
-                        yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  Deleted message");
+                    if (Database.directs.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.directs.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(65);
+                        gridPane.add(messageImage_view,0,counter);
                     }
                     else {
-                        yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        Label yourMessage = new Label();
+                        if (Database.directs.get(u).messages.get(i).isEdited){
+                            yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        else if (Database.directs.get(u).messages.get(i).isDeleted){
+                            yourMessage.setText("  Deleted message");
+                        }
+                        else {
+                            yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        yourMessage.setFont(Font.font(18));
+                        gridPane.add(yourMessage,0,counter);
                     }
-                    yourMessage.setFont(Font.font(18));
-                    gridPane.add(yourMessage,0,counter);
                     counter--;
                 }
             }
@@ -195,6 +217,30 @@ public class DirectChat {
         else {
             for (int i=Database.directs.get(u).messages.size()-1; i>=0; i--){
                 if (counter>=0 && Database.directs.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
+
+                    if (Database.directs.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.directs.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(65);
+                        GridPane.setHalignment(messageImage_view,HPos.CENTER);
+                        gridPane.add(messageImage_view,1,counter);
+                    }
+                    else {
+                        Label myMessage = new Label();
+                        if (Database.directs.get(u).messages.get(i).isEdited){
+                            myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        else if (Database.directs.get(u).messages.get(i).isDeleted){
+                            myMessage.setText("Deleted message  ");
+                        }
+                        else {
+                            myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        GridPane.setHalignment(myMessage, HPos.RIGHT);
+                        myMessage.setFont(Font.font(18));
+                        gridPane.add(myMessage,1,counter);
+                    }
 
                     Button edit = new Button("edit");
                     int finalI = i;
@@ -274,19 +320,6 @@ public class DirectChat {
                         gridPane.add(forward,1,counter);
                     }
 
-                    Label myMessage = new Label();
-                    if (Database.directs.get(u).messages.get(i).isEdited){
-                        myMessage.setText("edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("Deleted message  ");
-                    }
-                    else {
-                        myMessage.setText(Database.directs.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    GridPane.setHalignment(myMessage, HPos.RIGHT);
-                    myMessage.setFont(Font.font(18));
-                    gridPane.add(myMessage,1,counter);
                     counter--;
                 }
                 else if (counter>=0){
@@ -305,18 +338,28 @@ public class DirectChat {
                         gridPane.add(reply, 1, counter);
                     }
 
-                    Label yourMessage = new Label();
-                    if (Database.directs.get(u).messages.get(i).isEdited){
-                        yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    else if (Database.directs.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  Deleted message");
+                    if (Database.directs.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.directs.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(65);
+                        gridPane.add(messageImage_view,0,counter);
                     }
                     else {
-                        yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        Label yourMessage = new Label();
+                        if (Database.directs.get(u).messages.get(i).isEdited){
+                            yourMessage.setText("  edited - "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        else if (Database.directs.get(u).messages.get(i).isDeleted){
+                            yourMessage.setText("  Deleted message");
+                        }
+                        else {
+                            yourMessage.setText("  "+Database.directs.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        yourMessage.setFont(Font.font(18));
+                        gridPane.add(yourMessage,0,counter);
                     }
-                    yourMessage.setFont(Font.font(18));
-                    gridPane.add(yourMessage,0,counter);
+
                     counter--;
                 }
             }

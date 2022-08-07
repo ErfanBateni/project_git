@@ -232,7 +232,7 @@ public class GroupChat {
             }
         }
         if (!Database.groups.get(u).picture.equals(".png")){
-            Image groupImage = new Image(Database.users.get(v).picture);
+            Image groupImage = new Image(Database.groups.get(u).picture);
             imageView.setImage(groupImage);
         }
         gridPane.getChildren().clear();
@@ -287,7 +287,12 @@ public class GroupChat {
                         Button reply = new Button("reply");
                         int finalI2 = i;
                         reply.setOnMouseClicked(mouseEvent -> {
-                            Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI2).textMessage + ")";
+                            if (Database.groups.get(u).messages.get(finalI2).textMessage.endsWith(".png")){
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage + " (replied to picture)";
+                            }
+                            else {
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI2).textMessage + ")";
+                            }
                             try {
                                 initialize();
                             } catch (FileNotFoundException e) {
@@ -321,40 +326,66 @@ public class GroupChat {
                         gridPane.add(forward,1,counter);
                     }
 
-                    Label myMessage = new Label();
-                    if (Database.groups.get(u).messages.get(i).isEdited){
-                        myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        myMessage.setText("Deleted message  ");
+                    if (Database.groups.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.groups.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(35);
+                        GridPane.setHalignment(messageImage_view,HPos.RIGHT);
+                        gridPane.add(messageImage_view,2,counter);
                     }
                     else {
-                        myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                        Label myMessage = new Label();
+                        if (Database.groups.get(u).messages.get(i).isEdited){
+                            myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        else if (Database.groups.get(u).messages.get(i).isDeleted){
+                            myMessage.setText("Deleted message  ");
+                        }
+                        else {
+                            myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        GridPane.setHalignment(myMessage, HPos.RIGHT);
+                        myMessage.setFont(Font.font(18));
+                        gridPane.add(myMessage,2,counter);
                     }
-                    GridPane.setHalignment(myMessage, HPos.RIGHT);
-                    myMessage.setFont(Font.font(18));
-                    gridPane.add(myMessage,2,counter);
 
                     counter--;
                 }
                 else if (counter>=0){
-                    Label yourMessage = new Label();
-                    if (Database.groups.get(u).messages.get(i).isEdited){
-                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
-                    }
-                    else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  Deleted message");
+
+                    if (Database.groups.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.groups.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(35);
+                        gridPane.add(messageImage_view,0,counter);
                     }
                     else {
-                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                        Label yourMessage = new Label();
+                        if (Database.groups.get(u).messages.get(i).isEdited){
+                            yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
+                        }
+                        else if (Database.groups.get(u).messages.get(i).isDeleted){
+                            yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+"  Deleted message");
+                        }
+                        else {
+                            yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                        }
+                        yourMessage.setFont(Font.font(18));
+                        gridPane.add(yourMessage,0,counter);
                     }
-                    yourMessage.setFont(Font.font(18));
-                    gridPane.add(yourMessage,0,counter);
+
                     if (!Database.groups.get(u).messages.get(i).isDeleted){
                         Button reply = new Button("reply ");
                         int finalI3 = i;
                         reply.setOnMouseClicked(mouseEvent -> {
-                            Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI3).textMessage+")";
+                            if (Database.groups.get(u).messages.get(finalI3).textMessage.endsWith(".png")){
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to picture)";
+                            }
+                            else {
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI3).textMessage+")";
+                            }
                             try {
                                 initialize();
                             } catch (FileNotFoundException e) {
@@ -372,19 +403,29 @@ public class GroupChat {
             for (int i=Database.groups.get(u).messages.size()-1; i>=0; i--){
                 if (counter>=0 && Database.groups.get(u).messages.get(i).sender.userName.equals(readFile(new File("D:\\usernameLogin")))){
 
-                    Label myMessage = new Label();
-                    if (Database.groups.get(u).messages.get(i).isEdited){
-                        myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
-                    }
-                    else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  "+"Deleted message  ");
+                    if (Database.groups.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.groups.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(35);
+                        GridPane.setHalignment(messageImage_view,HPos.RIGHT);
+                        gridPane.add(messageImage_view,2,counter);
                     }
                     else {
-                        myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                        Label myMessage = new Label();
+                        if (Database.groups.get(u).messages.get(i).isEdited){
+                            myMessage.setText("edited - "+Database.groups.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        else if (Database.groups.get(u).messages.get(i).isDeleted){
+                            myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  "+"Deleted message  ");
+                        }
+                        else {
+                            myMessage.setText(Database.groups.get(u).messages.get(i).textMessage+"  ");
+                        }
+                        GridPane.setHalignment(myMessage, HPos.RIGHT);
+                        myMessage.setFont(Font.font(18));
+                        gridPane.add(myMessage,2,counter);
                     }
-                    GridPane.setHalignment(myMessage, HPos.RIGHT);
-                    myMessage.setFont(Font.font(18));
-                    gridPane.add(myMessage,2,counter);
 
                     Button edit = new Button("edit");
                     int finalI = i;
@@ -430,7 +471,12 @@ public class GroupChat {
                         Button reply = new Button("reply");
                         int finalI2 = i;
                         reply.setOnMouseClicked(mouseEvent -> {
-                            Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI2).textMessage + ")";
+                            if (Database.groups.get(u).messages.get(finalI2).textMessage.endsWith(".png")){
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage + " (replied to picture)";
+                            }
+                            else {
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size() - 1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI2).textMessage + ")";
+                            }
                             try {
                                 initialize();
                             } catch (FileNotFoundException e) {
@@ -467,23 +513,39 @@ public class GroupChat {
                     counter--;
                 }
                 else if (counter>=0){
-                    Label yourMessage = new Label();
-                    if (Database.groups.get(u).messages.get(i).isEdited){
-                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
-                    }
-                    else if (Database.groups.get(u).messages.get(i).isDeleted){
-                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+"  Deleted message");
+
+                    if (Database.groups.get(u).messages.get(i).textMessage.endsWith(".png")){
+                        Image messageImage = new Image(Database.groups.get(u).messages.get(i).textMessage);
+                        ImageView messageImage_view = new ImageView(messageImage);
+                        messageImage_view.setFitWidth(100);
+                        messageImage_view.setFitHeight(35);
+                        gridPane.add(messageImage_view,0,counter);
                     }
                     else {
-                        yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                        Label yourMessage = new Label();
+                        if (Database.groups.get(u).messages.get(i).isEdited){
+                            yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": edited - "+Database.groups.get(u).messages.get(i).textMessage);
+                        }
+                        else if (Database.groups.get(u).messages.get(i).isDeleted){
+                            yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+"  Deleted message");
+                        }
+                        else {
+                            yourMessage.setText("  "+Database.groups.get(u).messages.get(i).sender.userName+": "+Database.groups.get(u).messages.get(i).textMessage);
+                        }
+                        yourMessage.setFont(Font.font(18));
+                        gridPane.add(yourMessage,0,counter);
                     }
-                    yourMessage.setFont(Font.font(18));
-                    gridPane.add(yourMessage,0,counter);
+
                     if (!Database.groups.get(u).messages.get(i).isDeleted){
                         Button reply = new Button("reply ");
                         int finalI3 = i;
                         reply.setOnMouseClicked(mouseEvent -> {
-                            Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI3).textMessage+")";
+                            if (Database.groups.get(u).messages.get(finalI3).textMessage.endsWith(".png")){
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to picture)";
+                            }
+                            else {
+                                Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage = Database.groups.get(u).messages.get(Database.groups.get(u).messages.size()-1).textMessage + " (replied to " + Database.groups.get(u).messages.get(finalI3).textMessage+")";
+                            }
                             try {
                                 initialize();
                             } catch (FileNotFoundException e) {

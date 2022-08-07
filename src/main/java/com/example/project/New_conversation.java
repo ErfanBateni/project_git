@@ -6,6 +6,7 @@ import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
@@ -69,6 +70,50 @@ public class New_conversation {
                 }
             }
         }
+        TextField username = new TextField();
+        username.setMaxWidth(245);
+        GridPane.setHalignment(username,HPos.RIGHT);
+        gridPane.add(username,0,counter);
+        Button search = new Button(" search");
+        search.setOnMouseClicked(mouseEvent -> {
+            for (User secondUser : Database.users){
+                if (secondUser.userName.equals(username.getText())){
+                    try {
+                        if (!secondUser.userName.equals(readFile(new File("D:\\usernameLogin")))){
+                            directExits = false;isBlocked=false;
+                            for (int i = 0; i < Database.directs.size(); i++) {
+                                if ( (Database.users.get(v).userName.equals(Database.directs.get(i).first.userName) && secondUser.userName.equals(Database.directs.get(i).second.userName)) ||
+                                        (Database.users.get(v).userName.equals(Database.directs.get(i).second.userName) && secondUser.userName.equals(Database.directs.get(i).first.userName)) ) {
+                                    directExits = true;
+                                    break;
+                                }
+                            }
+                            if (secondUser.blocked.contains(Database.users.get(v)) || Database.users.get(v).blocked.contains(secondUser)) {
+                                isBlocked = true;
+                            }
+                            if (!directExits && !isBlocked){
+                                Direct newDirect = new Direct(secondUser);
+                                Label done = new Label("done!    ");
+                                done.setTextFill(Color.GREEN);
+                                GridPane.setHalignment(done,HPos.RIGHT);
+                                gridPane.add(done,1,counter-1);
+                            }
+                            else {
+                                Label tryAgain = new Label("try again    ");
+                                tryAgain.setTextFill(Color.RED);
+                                GridPane.setHalignment(tryAgain,HPos.RIGHT);
+                                gridPane.add(tryAgain,1,counter-1);
+                            }
+                        }
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+            }
+        });
+        gridPane.add(search,0,counter);
+        counter++;
     }
 
     @FXML
