@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static com.example.project.HelloApplication.stage;
@@ -59,25 +60,17 @@ public class Timeline {
                     showPost.setTextFill(Color.DARKBLUE);
                     int finalI = i;
                     showPost.setOnMouseClicked(mouseEvent -> {
-                        if (!Database.posts.get(finalI).seen.contains(Database.users.get(v))){
-                            Database.posts.get(finalI).seen.add(Database.users.get(v));
-                        }
-                        for (int j=0;j<Database.posts.size();j++){
-                            try {
-                                if (Database.posts.get(j).textMessage.equals(readFile(new File("D:\\postTextMessage")))){
-                                    Database.posts.get(j).seenNumber++;
-                                    break;
-                                }
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
                         File file = new File("D:\\postTextMessage");
                         try {
                             writeFile(file,Database.posts.get(finalI).textMessage,false);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        if (!Database.posts.get(finalI).seen.contains(Database.users.get(v))){
+                            Database.posts.get(finalI).seen.add(Database.users.get(v));
+                        }
+                        Database.posts.get(finalI).seenNumber = Database.posts.get(finalI).seenNumber+1;
+                        Database.posts.get(finalI).seenTime.add(String.valueOf(LocalDate.now()).split("-")[2]);
                         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("posts.fxml"));
                         Scene scene = null;
                         try {
@@ -112,22 +105,14 @@ public class Timeline {
                     showPost.setTextFill(Color.DARKBLUE);
                     int finalI = i;
                     showPost.setOnMouseClicked(mouseEvent -> {
-                        for (int j=0;j<Database.posts.size();j++){
-                            try {
-                                if (Database.posts.get(j).textMessage.equals(readFile(new File("D:\\postTextMessage")))){
-                                    Database.posts.get(j).seenNumber++;
-                                    break;
-                                }
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
                         File file = new File("D:\\postTextMessage");
                         try {
                             writeFile(file,Database.posts.get(finalI).textMessage,false);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        Database.posts.get(finalI).seenNumber = Database.posts.get(finalI).seenNumber+1;
+                        Database.posts.get(finalI).seenTime.add(String.valueOf(LocalDate.now()).split("-")[2]);
                         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("posts.fxml"));
                         Scene scene = null;
                         try {

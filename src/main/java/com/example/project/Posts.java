@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static com.example.project.HelloApplication.stage;
@@ -82,7 +83,15 @@ public class Posts {
         if (Database.posts.get(u).sender.userType){
             Button seenNumber = new Button("seen = "+Database.posts.get(u).seenNumber);
             seenNumber.setOnMouseClicked(mouseEvent -> {
-
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("charts.fxml"));
+                Scene scene = null;
+                try {
+                    scene = new Scene(fxmlLoader.load(), 600, 400);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                stage.setScene(scene);
+                stage.show();
             });
             seenNumber.relocate(433,333);
             seenNumber.setPrefHeight(31);
@@ -187,6 +196,7 @@ public class Posts {
         }
         if (!Database.posts.get(u).liked.contains(Database.users.get(v))){
             Database.posts.get(u).liked.add(Database.users.get(v));
+            Database.posts.get(u).likeTime.add(String.valueOf(LocalDate.now()).split("-")[2]);
         }
         if (Database.posts.get(u).disliked.contains(Database.users.get(v))){
             Database.posts.get(u).disliked.remove(Database.users.get(v));
@@ -211,6 +221,7 @@ public class Posts {
                 }
                 if (post.liked.contains(Database.users.get(v))){
                     post.liked.remove(Database.users.get(v));
+                    post.likeTime.remove(String.valueOf(LocalDate.now()).split("-")[2]);
                 }
             }
         }

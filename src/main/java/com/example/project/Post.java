@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Post extends Message {
     ArrayList<CommentPost> replies = new ArrayList<>();
     ArrayList<User> seen = new ArrayList<>();
+    ArrayList<String> likeTime = new ArrayList<>();
+    ArrayList<String> seenTime = new ArrayList<>();
     int seenNumber=0;
     public Post (User sender, String text, String picture) {
         this.sender = sender;
