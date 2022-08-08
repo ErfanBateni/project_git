@@ -58,6 +58,7 @@ public class Search_groups {
                             if (!group.members.contains(user) ){
                                 group.members.add(user);
                                 user.groups.add(group);
+                                group.seen.put(user,false);
                                 joined.setText("You are now a member of this group.");
                                 joined.setTextFill(Color.LIGHTGREEN);
                                 joined.setFont(Font.font(18));

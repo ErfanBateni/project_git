@@ -211,6 +211,11 @@ public class GroupChat {
         }
         if (groupExists && !message.getText().equals("") && !message.getText().equals(" ") && !message.getText().equals("  ") && !message.getText().equals("   ") && !message.getText().equals("    ") && !message.getText().equals("     ") && !message.getText().equals("      ") && !message.getText().equals("       ") && !message.getText().equals("        ") && !message.getText().equals("         ") && !message.getText().equals("          ") && !message.getText().equals("           ") && !message.getText().equals("            ") && !message.getText().equals("             ") && !message.getText().equals("              ") && !message.getText().equals("               ") && !message.getText().equals("                ") && !message.getText().equals("                 ") && !message.getText().equals("                  ") && !message.getText().equals("                   ") && !message.getText().equals("                    ") && !message.getText().equals("                     ") && !message.getText().equals("                      ") && !message.getText().equals("                       ") && !message.getText().equals("                        ") && !message.getText().equals("                         ") && !message.getText().equals("                          ") && !message.getText().equals("                           ") && !message.getText().equals("                            ") && !message.getText().equals("                             ") && !message.getText().equals("                              ")) {
             GroupMessage newGroupMessage = new GroupMessage(Database.users.get(v), message.getText(), Database.groups.get(u));
+            for (User user : Database.groups.get(u).members){
+                if (!user.userName.equals(Database.users.get(v).userName)){
+                    Database.groups.get(u).seen.replace(user,false);
+                }
+            }
         }
         message.setText("");
         initialize();

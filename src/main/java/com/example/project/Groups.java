@@ -44,6 +44,7 @@ public class Groups {
                     my_group.setText("go inside");
                     my_group.setTextFill(Color.DARKBLUE);
                     my_group.setOnMouseClicked(mouseEvent -> {
+                        group.seen.replace(user,true);
                         File file = new File("D:\\groupName");
                         try {
                             writeFile(file,group.groupName,false);
@@ -61,6 +62,9 @@ public class Groups {
                         stage.show();
                     });
                     Label groupName = new Label();
+                    if (!group.seen.get(user)){
+                        groupName.setUnderline(true);
+                    }
                     groupName.setText(user.groups.get(counter).groupName);
                     groupName.setTextFill(Color.DARKBLUE);
                     groupName.setFont(Font.font(25));

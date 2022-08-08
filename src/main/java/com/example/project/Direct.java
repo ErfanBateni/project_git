@@ -32,8 +32,8 @@ public class Direct {
         this.second = second;
         this.second.directs.add(this);
         Database.directs.add(this);
-        this.seen.put(Database.users.get(v),true);
-        this.seen.put(second,true);
+        this.seen.put(Database.users.get(v),false);
+        this.seen.put(second,false);
     }
 
     public Direct (User first, User second) {

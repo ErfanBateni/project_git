@@ -46,6 +46,7 @@ public class AddMember {
                             if (!group.members.contains(user)){
                                 group.members.add(user);
                                 user.groups.add(group);
+                                group.seen.put(user,false);
                             }
                         });
                         counter++;
