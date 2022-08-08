@@ -29,7 +29,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1387.0" stroke="BLACK" strokeType="INSIDE" width="1709.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1600.0" stroke="BLACK" strokeType="INSIDE" width="1709.0">
          <fill>
             <LinearGradient cycleMethod="REPEAT" endX="0.31534090909090906" endY="0.5795454852508776" startX="0.4621211823188899" startY="0.21212122657082294">
                <stops>

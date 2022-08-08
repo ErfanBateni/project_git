@@ -31,7 +31,7 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="1601.0" stroke="BLACK" strokeType="INSIDE" width="1636.0" GridPane.rowIndex="9">
          <fill>
-            <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.6060606430877338" startX="0.8295454545454545" startY="0.8522726911487002">
+            <LinearGradient cycleMethod="REPEAT" endX="0.6250000144496108" endY="0.6439394309665216" startX="0.3749999999999999" startY="0.859848459561666">
                <stops>
                   <Stop>
                      <color>
@@ -63,7 +63,7 @@
             <Insets left="30.0" top="-40.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="followOrUnfollow" onAction="#followOrUnfollow" layoutX="40.0" layoutY="344.0" mnemonicParsing="false" text="follow or unfollow" textFill="#3a67c9" GridPane.rowIndex="9">
+      <Button fx:id="followOrUnfollow" layoutX="40.0" layoutY="344.0" mnemonicParsing="false" onAction="#followOrUnfollow" text="follow or unfollow" textFill="#3a67c9" GridPane.rowIndex="9">
          <font>
             <Font size="18.0" />
          </font>
@@ -71,7 +71,7 @@
             <Insets left="130.0" top="-40.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="blockOrUnblock" onAction="#blockOrUnblock" layoutX="10.0" layoutY="4.0" mnemonicParsing="false" text="block or unblock" textFill="#3a67c9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+      <Button fx:id="blockOrUnblock" layoutX="10.0" layoutY="4.0" mnemonicParsing="false" onAction="#blockOrUnblock" text="block or unblock" textFill="#3a67c9" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
          <font>
             <Font size="19.0" />
          </font>

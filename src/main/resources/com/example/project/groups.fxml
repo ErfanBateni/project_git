@@ -31,7 +31,7 @@
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="1601.0" stroke="BLACK" strokeType="INSIDE" width="1636.0" GridPane.rowIndex="9">
             <fill>
-                <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="0.6060606430877338" startX="0.8295454545454545" startY="0.8522726911487002">
+                <LinearGradient cycleMethod="REPEAT" endX="0.6704545165553237" endY="0.7045454698981659" startX="0.583333261085279" startY="0.8939393361409506">
                     <stops>
                         <Stop>
                             <color>

@@ -28,13 +28,27 @@ public class Search {
         }
         return text.toString();
     }
+    int v,counter;
 
     @FXML
     TextField search_message;
 
-    public void initialize(){
+    public void initialize() throws FileNotFoundException {
+        for (int i = 0; i < Database.users.size(); i++) {
+            if (Controller.currentUser.equals(readFile(new File("D:\\usernameLogin")))) {
+                v = i;
+            }
+        }
         Rectangle rectangle = new Rectangle(0,0,1600,1400);
-        rectangle.setFill(Color.LIGHTBLUE);
+        if (Database.users.get(v).theme==1){
+            rectangle.setFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            rectangle.setFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            rectangle.setFill(Color.LIGHTBLUE);
+        }
         gridPane.add(rectangle,0,0);
     }
 
@@ -56,7 +70,7 @@ public class Search {
     @FXML
     Button search;
     public void search() throws FileNotFoundException {
-        int v = 0,counter=0;
+        v=0;counter=0;
         boolean search = false;
         for (int i = 0; i < Database.users.size(); i++) {
             if (Controller.currentUser.equals(readFile(new File("D:\\usernameLogin")))) {
@@ -65,7 +79,15 @@ public class Search {
         }
         gridPane.getChildren().clear();
         Rectangle rectangle = new Rectangle(0,0,1600,1400);
-        rectangle.setFill(Color.LIGHTBLUE);
+        if (Database.users.get(v).theme==1){
+            rectangle.setFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            rectangle.setFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            rectangle.setFill(Color.LIGHTBLUE);
+        }
         gridPane.add(rectangle,0,0);
         for (int i = 0; i < Database.users.get(v).directs.size(); i++){
             for (int j = 0; j < Database.users.get(v).directs.get(i).messages.size(); j++) {

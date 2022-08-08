@@ -39,6 +39,73 @@ public class Second_menu {
         fileWriter.close();
     }
 
+    @FXML
+    Button red;
+    public void red() throws FileNotFoundException {
+        for (int i=0;i<Database.users.size();i++){
+            if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
+                v=i;
+                break;
+            }
+        }
+        Database.users.get(v).theme = 1;
+        if (Database.users.get(v).theme==1){
+            theme.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            theme.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            theme.setTextFill(Color.LIGHTBLUE);
+        }
+        initialize();
+    }
+    @FXML
+    Button green;
+    public void green() throws FileNotFoundException {
+        for (int i=0;i<Database.users.size();i++){
+            if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
+                v=i;
+                break;
+            }
+        }
+        Database.users.get(v).theme = 2;
+        if (Database.users.get(v).theme==1){
+            theme.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            theme.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            theme.setTextFill(Color.LIGHTBLUE);
+        }
+        initialize();
+    }
+    @FXML
+    Button blue;
+    public void blue() throws FileNotFoundException {
+        for (int i=0;i<Database.users.size();i++){
+            if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
+                v=i;
+                break;
+            }
+        }
+        Database.users.get(v).theme = 3;
+        if (Database.users.get(v).theme==1){
+            theme.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            theme.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            theme.setTextFill(Color.LIGHTBLUE);
+        }
+        initialize();
+    }
+
+    @FXML
+    Label theme;
+
     public void initialize() throws FileNotFoundException {
         v=0;counter=1;
         for (int i=0;i<Database.users.size();i++){
@@ -47,19 +114,52 @@ public class Second_menu {
                 break;
             }
         }
+        if (Database.users.get(v).theme==1){
+            theme.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            theme.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            theme.setTextFill(Color.LIGHTBLUE);
+        }
 
         Label username = new Label(Database.users.get(v).userName);
-        username.setTextFill(Color.CADETBLUE);
+        if (Database.users.get(v).theme==1){
+            username.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            username.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            username.setTextFill(Color.LIGHTBLUE);
+        }
         username.setFont(Font.font(30));
         username.relocate(55,3);
 
         Label followersNum = new Label(String.valueOf(Database.users.get(v).followers.size()));
-        followersNum.setTextFill(Color.CADETBLUE);
+        if (Database.users.get(v).theme==1){
+            followersNum.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            followersNum.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            followersNum.setTextFill(Color.LIGHTBLUE);
+        }
         followersNum.setFont(Font.font(30));
         followersNum.relocate(230,40);
 
         Label followingsNum = new Label(String.valueOf(Database.users.get(v).followings.size()));
-        followingsNum.setTextFill(Color.CADETBLUE);
+        if (Database.users.get(v).theme==1){
+            followingsNum.setTextFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            followingsNum.setTextFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            followingsNum.setTextFill(Color.LIGHTBLUE);
+        }
         followingsNum.setFont(Font.font(30));
         followingsNum.relocate(230,80);
         pane.getChildren().add(username);

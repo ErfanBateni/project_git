@@ -70,7 +70,7 @@ public class GroupChat {
                         }
                         else {
                             Label warning = new Label();
-                            warning.setText("You do not have the permission.");
+                            warning.setText("  You do not have the permission.");
                             warning.setTextFill(Color.RED);
                             gridPane.add(warning,0,1);
                         }
@@ -146,8 +146,9 @@ public class GroupChat {
                         }
                         else {
                             Label warning = new Label();
-                            warning.setText("You do not have the permission.");
+                            warning.setText("You do not have the permission.  ");
                             warning.setTextFill(Color.RED);
+                            GridPane.setHalignment(warning,HPos.RIGHT);
                             gridPane.add(warning,2,0);
                         }
                     }
@@ -237,7 +238,15 @@ public class GroupChat {
         }
         gridPane.getChildren().clear();
         Rectangle rectangle = new Rectangle(0,0,1600,1400);
-        rectangle.setFill(Color.LIGHTBLUE);
+        if (Database.users.get(v).theme==1){
+            rectangle.setFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            rectangle.setFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            rectangle.setFill(Color.LIGHTBLUE);
+        }
         gridPane.add(rectangle,0,0);
         counter=6;
         if (Database.groups.get(u).messages.size()>7){

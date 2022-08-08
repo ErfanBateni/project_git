@@ -62,7 +62,15 @@ public class DirectChat {
 
         gridPane.getChildren().clear();
         Rectangle rectangle = new Rectangle(0,0,1600,1400);
-        rectangle.setFill(Color.LIGHTBLUE);
+        if (Database.users.get(v).theme==1){
+            rectangle.setFill(Color.ORANGERED);
+        }
+        else if (Database.users.get(v).theme==2){
+            rectangle.setFill(Color.LIGHTGREEN);
+        }
+        else if (Database.users.get(v).theme==3){
+            rectangle.setFill(Color.LIGHTBLUE);
+        }
         gridPane.add(rectangle,0,0);
         counter=9;
         if (Database.directs.get(u).messages.size()>10){

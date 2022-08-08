@@ -180,7 +180,6 @@ public class Posts {
     Button like;
     public void like() throws FileNotFoundException {
         dislike.setTextFill(Color.RED);
-        like.setTextFill(Color.GREEN);
         int v=0,u=0;
         for (int i=0;i<Database.users.size();i++){
             if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
@@ -194,19 +193,24 @@ public class Posts {
                 break;
             }
         }
-        if (!Database.posts.get(u).liked.contains(Database.users.get(v))){
+        if (Database.posts.get(u).liked.contains(Database.users.get(v))){
+            Database.posts.get(u).liked.remove(Database.users.get(v));
+            like.setTextFill(Color.RED);
+        }
+        else {
             Database.posts.get(u).liked.add(Database.users.get(v));
             Database.posts.get(u).likeTime.add(String.valueOf(LocalDate.now()).split("-")[2]);
+            like.setTextFill(Color.GREEN);
+            if (Database.posts.get(u).disliked.contains(Database.users.get(v))){
+                Database.posts.get(u).disliked.remove(Database.users.get(v));
+            }
         }
-        if (Database.posts.get(u).disliked.contains(Database.users.get(v))){
-            Database.posts.get(u).disliked.remove(Database.users.get(v));
-        }
+
     }
     @FXML
     Button dislike;
     public void dislike() throws FileNotFoundException {
         like.setTextFill(Color.RED);
-        dislike.setTextFill(Color.GREEN);
         int v=0;
         for (int i=0;i<Database.users.size();i++){
             if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){
@@ -216,12 +220,17 @@ public class Posts {
         }
         for (Post post : Database.posts){
             if (post.textMessage.equals(readFile(new File("D:\\postTextMessage")))){
-                if (!post.disliked.contains(Database.users.get(v))){
-                    post.disliked.add(Database.users.get(v));
+                if (post.disliked.contains(Database.users.get(v))){
+                    post.disliked.remove(Database.users.get(v));
+                    dislike.setTextFill(Color.RED);
                 }
-                if (post.liked.contains(Database.users.get(v))){
-                    post.liked.remove(Database.users.get(v));
-                    post.likeTime.remove(String.valueOf(LocalDate.now()).split("-")[2]);
+                else {
+                    post.disliked.add(Database.users.get(v));
+                    dislike.setTextFill(Color.GREEN);
+                    if (post.liked.contains(Database.users.get(v))){
+                        post.liked.remove(Database.users.get(v));
+                        post.likeTime.remove(String.valueOf(LocalDate.now()).split("-")[2]);
+                    }
                 }
             }
         }
