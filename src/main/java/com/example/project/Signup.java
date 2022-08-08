@@ -41,7 +41,6 @@ public class Signup {
     @FXML
     Button done;
     public void done(){
-        picture.setText(picture.getText()+".png");
         boolean userExists = false;
         Label warning1 = new Label();
         Label warning2 = new Label();

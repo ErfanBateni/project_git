@@ -30,7 +30,6 @@ public class NewPost {
     @FXML
     Button post;
     public void post() throws FileNotFoundException {
-        postPicture.setText(postPicture.getText()+".png");
         int v=0;
         for (int i=0;i<Database.users.size();i++){
             if (Database.users.get(i).userName.equals(readFile(new File("D:\\usernameLogin")))){

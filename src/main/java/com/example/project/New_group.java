@@ -36,7 +36,6 @@ public class New_group {
     @FXML
     Button create;
     public void create() throws FileNotFoundException {
-        picture.setText(picture.getText()+".png");
         boolean groupExists = false;
         for (int i = 0; i < Database.groups.size(); i++) {
             if (Database.groups.get(i).groupName.equals(groupName.getText())) {

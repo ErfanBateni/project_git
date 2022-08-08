@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class Advertisement extends Message {
     String productName;
+    String picture;
     int productPrice;
     boolean discount;  //  true: has a discount, false: doesn't have a discount
     int discountPercentage;
     ArrayList<User> seen = new ArrayList<>();
 
-    public Advertisement(User sender, String text, String name,
+    public Advertisement(User sender, String picture, String name,
                          int price, boolean isDiscount, int percent) {
         this.sender = sender;
-        this.textMessage = text;
+        this.picture = picture;
         this.messageNum = HelloApplication.messageNum;
         HelloApplication.messageNum = HelloApplication.messageNum + 1;
         this.productName = name;

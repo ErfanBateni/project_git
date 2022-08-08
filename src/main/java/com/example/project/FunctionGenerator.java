@@ -426,7 +426,7 @@ public class FunctionGenerator {
             A.sender.credit = A.sender.credit + a;
             System.out.println("Transaction is completed. Your product will be delivered to your address.");
         }
-    }
+    } //done
 
     public static void increaseCredit (int a, User A) {
         if (a > 0) {
@@ -436,7 +436,7 @@ public class FunctionGenerator {
         else {
             System.out.println("You can not negatively charge your wallet.");
         }
-    }
+    } //done
 
 
 
