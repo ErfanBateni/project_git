@@ -58,7 +58,11 @@ public class New_conversation {
                     gridPane.add(name,0,counter);
                     Button newConversation = new Button("new conversation");
                     newConversation.setOnMouseClicked(mouseEvent -> {
-                        Direct newDirect = new Direct(secondUser);
+                        try {
+                            Direct newDirect = new Direct(secondUser);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
                         Label done = new Label("done!    ");
                         done.setTextFill(Color.GREEN);
                         GridPane.setHalignment(done,HPos.RIGHT);

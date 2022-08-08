@@ -25,6 +25,9 @@ public class Search_groups {
         }
         return text.toString();
     }
+    Label joined = new Label();
+    Label warning = new Label();
+    Label groupName_join = new Label();
 
 
     @FXML
@@ -33,6 +36,9 @@ public class Search_groups {
     @FXML
     Button search;
     public void search() throws FileNotFoundException {
+        anchorPane.getChildren().remove(joined);
+        anchorPane.getChildren().remove(warning);
+        anchorPane.getChildren().remove(groupName_join);
         for (Group group : Database.groups){
             if (group.groupName.equals(groupName.getText())){
                 Button join = new Button();
@@ -40,19 +46,18 @@ public class Search_groups {
                 join.setTextFill(Color.CADETBLUE);
                 join.relocate(144,210);
                 anchorPane.getChildren().add(join);
-                Label groupName_join = new Label();
                 groupName_join.setText(groupName.getText());
                 groupName_join.setTextFill(Color.DARKBLUE);
                 groupName_join.setFont(Font.font(25));
                 groupName_join.relocate(244,200);
                 anchorPane.getChildren().add(groupName_join);
                 join.setOnMouseClicked(mouseEvent -> {for (User user : Database.users){
+                    anchorPane.getChildren().remove(joined);
                     try {
                         if (user.userName.equals(readFile(new File("D:\\usernameLogin")))){
                             if (!group.members.contains(user) ){
                                 group.members.add(user);
                                 user.groups.add(group);
-                                Label joined = new Label();
                                 joined.setText("You are now a member of this group.");
                                 joined.setTextFill(Color.LIGHTGREEN);
                                 joined.setFont(Font.font(18));
@@ -60,9 +65,9 @@ public class Search_groups {
                                 anchorPane.getChildren().add(joined);
                             }
                             else {
-                                Label warning = new Label();
                                 warning.setText("You are already a member of this chat.");
                                 warning.setTextFill(Color.RED);
+                                warning.setFont(Font.font(18));
                                 warning.relocate(180,235);
                                 anchorPane.getChildren().add(warning);
                             }

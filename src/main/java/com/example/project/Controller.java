@@ -81,7 +81,7 @@ public class Controller {
 
         if (a.equals("User") || a.equals("user") || a.equals("User And Product Recommendations")
                 || a.equals("user and product recommendations")) {
-            Controller.recommend();
+            //Controller.recommend();
         }
         if (a.equals("Store") || a.equals("store")) {
             Controller.store();
@@ -378,7 +378,7 @@ public class Controller {
                         break;
                     }
                 }
-                FunctionGenerator.startConversation(Database.users.get(n));
+                //FunctionGenerator.startConversation(Database.users.get(n));
                 Controller.directs();
             }
             else {
@@ -903,7 +903,7 @@ public class Controller {
         Controller.mainMenu();
     }
 
-    public static void recommend () {
+    /*public static void recommend () {
         int v = 0;
         for (int i = 0; i < Database.users.size(); i++) {
             if (Controller.currentUser.equals(Database.users.get(i).userName)) {
@@ -925,7 +925,7 @@ public class Controller {
         if (response.equals("Main Menu") || response.equals("main menu")) {
             Controller.mainMenu();
         }
-    }
+    }*/
 
     public static void store () {
         int v = 0;

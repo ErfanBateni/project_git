@@ -1,5 +1,6 @@
 package com.example.project;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -687,7 +688,7 @@ public class FunctionGenerator {
 
 
 
-    public static void startConversation (User second) {
+    public static void startConversation (User second) throws FileNotFoundException {
         int v = 0;
         for (int i = 0; i < Database.users.size(); i++) {
             if (Controller.currentUser.equals(Database.users.get(i).userName)) {
@@ -744,7 +745,7 @@ public class FunctionGenerator {
     } //done
 
 
-    public static void suggestUser (User a) {
+    public static void suggestUser (User a) throws FileNotFoundException {/*
         ArrayList<User> followedByFollowers = new ArrayList<>();
         for (int i = 0; i < a.followings.size(); i++) {
             for (int j = 0; j < a.followings.get(i).followings.size(); j++) {
@@ -795,7 +796,7 @@ public class FunctionGenerator {
         else {
             System.out.println("No suggested user was found for you.");
         }
-    }
+    */}
 
     public static void suggestProduct (User a) {
         ArrayList<Advertisement> suggestions = new ArrayList<>();
